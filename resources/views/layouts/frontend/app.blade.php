@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr" data-mode="light" class="scroll-smooths group" data-theme-color="violet">
     <head>
         <meta charset="utf-8" />
-        <title>index-1 | Jobcy - Admin & Dashboard Template</title>
+        <title>JobPulse - @yield('title')</title>
         <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta

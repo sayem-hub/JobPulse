@@ -2,8 +2,8 @@
     <div class="mx-auto container-fluid">
         <div class="flex flex-wrap items-center justify-between mx-auto">
             <a href="index.html" class="flex items-center">
-                <img src="assets/images/logo-dark.png" alt="" class="logo-dark h-[22px] block dark:hidden">
-                <img src="assets/images/logo-light.png" alt="" class="logo-dark h-[22px] hidden dark:block">
+                <img src="{{ asset('assets/images/logo-dark_e.png') }}" alt="" class="logo-dark_e h-[22px] block dark:hidden">
+                
             </a>
             <button data-collapse-toggle="navbar-collapse" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg navbar-toggler group lg:hidden hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
@@ -141,7 +141,11 @@
                         <a href="{{ route('home') }}" class="py-2.5 text-gray-800 font-medium leading-tight dark:text-gray-50" id="contact" data-bs-toggle="dropdown">Home</a>
                     </li>
 
-                    <li class="relative dropdown lg:mt-0">
+                    <li class="py-5 lg:px-4">
+                        <a href="{{ route('about-us') }}" class="py-2.5 text-gray-800 font-medium leading-tight dark:text-gray-50" id="contact" data-bs-toggle="dropdown">About Us</a>
+                    </li>
+
+                    {{-- <li class="relative dropdown lg:mt-0">
                         <button class="py-5 text-gray-800 lg:px-4 dropdown-toggle dark:text-gray-50 lg:h-[70px]" id="company" data-bs-toggle="dropdown">Company <i class='align-middle bx bxs-chevron-down ltr:ml-1 rtl:mr-1'></i></button>
 
                         <ul class="relative top-auto z-50 py-2 list-none bg-white border-0 rounded dropdown-menu lg:border border-gray-500/20 lg:absolute ltr:-left-3 rtl:-right-3 lg:w-48 lg:shadow-lg dark:bg-neutral-800" aria-labelledby="company">
@@ -160,7 +164,7 @@
                             <li><a class="block w-full px-4 py-2 text-13 font-medium text-gray-700 duration-300 bg-transparent dropdown-item whitespace-nowrap hover:translate-x-1.5 group-data-[theme-color=violet]:hover:text-violet-500 group-data-[theme-color=sky]:hover:text-sky-500 group-data-[theme-color=red]:hover:text-red-500 group-data-[theme-color=green]:hover:text-green-500 group-data-[theme-color=pink]:hover:text-pink-500 group-data-[theme-color=blue]:hover:text-blue-500 uppercase group-data-[mode=dark]:text-gray-50" href="faqs.html">Faqs</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="relative dropdown lg:mt-0">
                         <button href="#" class="py-5 text-gray-800 lg:px-4 dropdown-toggle dark:text-gray-50 lg:h-[70px]"id="pages" data-bs-toggle="dropdown">Pages <i class='align-middle bx bxs-chevron-down ltr:ml-1 rtl:mr-1'></i></button>
                         <div class="relative top-auto z-50 py-2 list-none bg-white border-0 rounded dropdown-menu lg:border border-gray-500/20 lg:absolute  lg:w-[40rem] lg:shadow-lg dark:bg-neutral-800">
@@ -248,7 +252,7 @@
                         </ul>
                     </li>
                     <li class="py-5 lg:px-4">
-                        <a href="{{ route('contact-us') }}" class="py-2.5 text-gray-800 font-medium leading-tight dark:text-gray-50" id="contact" data-bs-toggle="dropdown">Contact </a>
+                        <a href="{{ route('contact-us') }}" class="py-2.5 text-gray-800 font-medium leading-tight dark:text-gray-50" id="contact" data-bs-toggle="dropdown">Contact Us</a>
                     </li>
                 </ul>
             </div>

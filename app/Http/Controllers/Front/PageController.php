@@ -12,7 +12,7 @@ class PageController extends Controller
         return view('pages.home');
     }
 
-    public function about()
+    public function aboutUs()
     {
         return view('pages.about');
     }

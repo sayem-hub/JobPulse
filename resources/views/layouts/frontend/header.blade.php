@@ -2,9 +2,7 @@
     <div class="grid items-center grid-cols-12">
         <div class="col-span-7">
             <ul class="flex items-center py-3">
-                <li class="ltr:mr-4 rtl:ml-4">
-                    <p class="mb-0 text-gray-800 text-13 dark:text-gray-50"> <i class="mdi mdi-map-marker"></i> Your Location: <a href="javascript:void(0)" class="font-medium">New Caledonia</a></p>
-                </li>
+               <p class="text-gray-800 mr-2">Contact</p>
                 <li>
                     <ul class="flex flex-wrap gap-4 text-gray-800 ">
                         <li class="transition-all duration-200 ease-in hover:text-green-500 dark:text-gray-50 dark:hover:text-green-500"><a href="javascript:void(0)" class="social-link"><i class="uil uil-whatsapp"></i></a></li>
@@ -61,29 +59,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <div class="relative hidden dropdown language sm:block">
-                        <button class="px-4 py-3 border-0 btn dropdown-toggle" type="button" aria-expanded="false" data-dropdown-toggle="navNotifications">
-                            <img src="assets/images/flags/us.jpg" alt="" class="h-4" id="header-lang-img">
-                        </button>
-                        <div class="absolute top-auto z-50 hidden w-40 list-none bg-white rounded shadow dropdown-menu -left-20 dark:bg-neutral-700" id="navNotifications">
-                            <ul class="border border-gray-50 dark:border-gray-700" aria-labelledby="navNotifications">
-                                <li>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50/50 dark:text-gray-200 dark:hover:bg-neutral-600/50 dark:hover:text-white"><img src="assets/images/flags/us.jpg" alt="user-image" class="inline-block h-3 mr-1"> <span class="align-middle">English</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50/50 dark:text-gray-200 dark:hover:bg-neutral-600/50 dark:hover:text-white"><img src="assets/images/flags/spain.jpg" alt="user-image" class="inline-block h-3 mr-1"> <span class="align-middle">Spanish</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50/50 dark:text-gray-200 dark:hover:bg-neutral-600/50 dark:hover:text-white"><img src="assets/images/flags/germany.jpg" alt="user-image" class="inline-block h-3 mr-1"> <span class="align-middle">German</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50/50 dark:text-gray-200 dark:hover:bg-neutral-600/50 dark:hover:text-white"><img src="assets/images/flags/italy.jpg" alt="user-image" class="inline-block h-3 mr-1"> <span class="align-middle">Italian</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+                
             </ul>
         </div>
     </div>
