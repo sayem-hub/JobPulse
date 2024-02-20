@@ -10,6 +10,7 @@
           name="description"/>
         <meta content="" name="Themesbrand" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
@@ -19,6 +20,9 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/icons.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}" />
+        <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
+        
+
     </head>
     
     <body class="bg-white dark:bg-neutral-800">
@@ -61,5 +65,8 @@
         <script src="{{ asset('assets/js/pages/nav&tabs.js') }}"></script>
 
         <script src="{{ asset('assets/js/app.js') }}"></script> 
+
+        
+        <script src="{{asset('assets/js/axios.min.js')}}"></script>
 </body>
 </html>

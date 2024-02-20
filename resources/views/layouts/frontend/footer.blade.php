@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="absolute right-0 -top-10 -z-0 opacity-20">
-        <img src="assets/images/subscribe.png" alt="" class="img-fluid">
+        <img src="{{ asset('assets/images/subscribe.png') }}" alt="" class="img-fluid">
     </div>
 </section>
 <!-- end subscribe -->

@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->foreign('job_type_id')->references('id')->on('job_types')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('degree_id')->unsigned();
             $table->foreign('degree_id')->references('id')->on('degrees')->onDelete('cascade')->onUpdate('cascade');
+        
             $table->string('job_title');
             $table->string('job_description');
             $table->string('job_type');
