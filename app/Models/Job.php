@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     use HasFactory;
+    protected $fillable = ['company_id', 'job_category_id', 'job_type_id', 'degree_id', 'job_title', 'job_description', 'vacancy', 'job_location', 'min_salary', 'max_salary', 'deadline', 'is_featured', 'status'];
 
     public function company()
     {
@@ -26,7 +27,7 @@ class Job extends Model
 
     public function degrees()
     {
-        return $this->belongsTo(Degree::class);
+        return $this->belongsTo(Degree::class, 'degree_id');
     }
 
     public function jobType()

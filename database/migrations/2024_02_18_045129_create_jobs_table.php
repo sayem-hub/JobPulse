@@ -20,19 +20,15 @@ return new class extends Migration {
             $table->foreign('job_type_id')->references('id')->on('job_types')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('degree_id')->unsigned();
             $table->foreign('degree_id')->references('id')->on('degrees')->onDelete('cascade')->onUpdate('cascade');
-        
             $table->string('job_title');
-            $table->string('job_description');
-            $table->string('job_type');
+            $table->longText('job_description');
             $table->string('vacancy');
             $table->string('job_location');
             $table->double('min_salary');
             $table->double('max_salary');
-            $table->string('salary');
-            $table->date('start_date');
             $table->date('deadline');
+            $table->tinyInteger('is_featured')->default(0);
             $table->enum('status', ['pending', 'active', 'expired'])->default('pending');
-
             $table->timestamps();
         });
     }

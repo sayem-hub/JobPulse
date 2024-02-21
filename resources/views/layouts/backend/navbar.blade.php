@@ -26,8 +26,9 @@
                     </ul>
                 </li>
 
+
                 
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-briefcase"></i>
+                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
                     <p>
                         Jobs
                         <i class="nav-arrow bi bi-chevron-right"></i>
@@ -37,12 +38,64 @@
                     <li class="nav-item"> <a href="{{ route('jobs.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                             <p>Jobs List</p>
                         </a> </li>
-                    <li class="nav-item"> <a href="{{ route('company.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                    <li class="nav-item"> <a href="{{ route('jobs.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                             <p>Add New Job</p>
                         </a> </li>
                     
                 </ul>
             </li>
+
+                
+                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
+                    <p>
+                        Jobs Category
+                        <i class="nav-arrow bi bi-chevron-right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item"> <a href="{{ route('category.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                            <p>Category List</p>
+                        </a> </li>
+                    <li class="nav-item"> <a href="{{ route('category.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                            <p>Add New Category</p>
+                        </a> </li>
+                    
+                </ul>
+            </li>
+            
+            <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
+                <p>
+                    Job Type
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item"> <a href="{{ route('type.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <p>Type List</p>
+                    </a> </li>
+                <li class="nav-item"> <a href="{{ route('type.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                        <p>Add New Type</p>
+                    </a> </li>
+                
+            </ul>
+        </li>
+
+        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
+            <p>
+                Degrees
+                <i class="nav-arrow bi bi-chevron-right"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item"> <a href="{{ route('degree.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                    <p>Degree List</p>
+                </a> </li>
+            <li class="nav-item"> <a href="{{ route('degree.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                    <p>Add New Degree</p>
+                </a> </li>
+            
+        </ul>
+    </li>
             </ul>
         </nav>
     </div> 
