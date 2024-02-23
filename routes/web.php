@@ -20,13 +20,17 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/about-us', [PageController::class, 'aboutUs'])->name('about-us');
 Route::get('/contact-us', [PageController::class, 'contactUs'])->name('contact-us');
 
-Route::get('/register/candidate', [AuthController::class, 'candidateRegisterPage'])->name('register.candidate.index');
-Route::get('/register/employer', [AuthController::class, 'employerRegisterPage'])->name('register.employer.index');
+//Auth Routes
 
-Route::post('/register/employer', [AuthController::class, 'employerRegister'])->name('register.employer');
+Route::get('/register/employer', [AuthController::class, 'employerRegisterPage'])->name('employer.register.page');
+Route::post('/register/employer', [AuthController::class, 'employerRegister'])->name('employer.register');
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login.page');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/register/candidate', [AuthController::class, 'candidateRegisterPage'])->name('register.candidate.page');
+
+
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

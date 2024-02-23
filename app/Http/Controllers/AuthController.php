@@ -28,7 +28,7 @@ class AuthController extends Controller
             return redirect()->intended(route('dashboard'));
         } else {
 
-            return redirect(route('login.page'))->withErrors(['email' => 'The provided credentials do not match our records.']);
+            return redirect()->back()->withErrors(['email' => 'The provided credentials do not match our records.']);
         }
     }
 
@@ -39,14 +39,11 @@ class AuthController extends Controller
         return redirect(route('login.page'));
     }
 
-    public function candidateRegisterPage()
-    {
-        return view('auth.register-candidate');
-    }
+
 
     public function employerRegisterPage()
     {
-        return view('auth.register-employer');
+        return view('auth.employer.register-employer');
     }
 
     public function employerRegister(Request $request)
@@ -72,6 +69,39 @@ class AuthController extends Controller
             ]);
 
             return ResponseHelper::Out('success', $employer, 200);
+        } catch (Exception $e) {
+            return ResponseHelper::Out('error', $e, 200);
+        }
+    }
+
+    public function candidateRegisterPage()
+    {
+        return view('auth.candidate.register-candidate');
+    }
+
+    public function candidateRegister(Request $request)
+    {
+        try {
+            $request->validate([
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'email' => 'required|email|unique:users',
+                'phone' => 'required',
+                'password' => 'required|string|min:5',
+
+            ]);
+
+            // dd($request->all());
+            $candidate = User::create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'password' => Hash::make($request->password),
+                'role' => "candidate",
+            ]);
+
+            return ResponseHelper::Out('success', $candidate, 200);
         } catch (Exception $e) {
             return ResponseHelper::Out('error', $e, 200);
         }
