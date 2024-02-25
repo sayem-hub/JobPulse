@@ -16,7 +16,7 @@
     </div>
     @endif
    
-    <a href="{{ route('jobs.create') }}" class="btn btn-success">Add New Job</a>
+    <a href="{{ route('jobs.create') }}" class="btn btn-success btn-sm">Add New Job</a>
     <table class="table table-bordered table-sm small table-responsive">
         <thead>
             <tr class="text-center">
@@ -37,6 +37,9 @@
                 <th>Action</th>
             </tr>
         </thead>
+        @if (count($jobs) == 0)
+            <td colspan="15" class="text-center">No Job Found!</td>
+        @endif
         <tbody>
             @foreach ($jobs as $key => $job)
                 <tr class="text-center">

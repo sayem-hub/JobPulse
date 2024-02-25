@@ -12,12 +12,17 @@ return new class extends Migration {
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
+            $table->string('organization_type');
             $table->string('company_name');
             $table->string('company_email');
             $table->string('company_phone');
+            $table->bigInteger('district_id')->unsigned();
+            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('division_id')->unsigned();
+            $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');
             $table->string('company_address');
             $table->string('company_country');
-            $table->string('industry_type');
+            $table->string('company_business');
             $table->date('establishment_date')->nullable();
             $table->string('company_size')->nullable();
             $table->string('logo')->nullable();

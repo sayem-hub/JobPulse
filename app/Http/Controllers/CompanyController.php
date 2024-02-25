@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Exception;
+use App\Models\Company;
+use App\Models\District;
+use App\Models\Division;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -18,8 +20,9 @@ class CompanyController extends Controller
     }
     public function create()
     {
-
-        return view('company.create');
+        $districts = District::select('id', 'name')->get();
+        $divisions = Division::all();
+        return view('company.create', compact('districts', 'divisions'));
     }
 
     public function store(Request $request)
@@ -27,15 +30,17 @@ class CompanyController extends Controller
 
         try {
             $validatedData = $request->validate([
+                'organization_type' => 'required',
                 'company_name' => 'required',
                 'company_email' => 'required|email',
                 'company_phone' => 'required',
+                'company_logo' => 'nullable',
                 'company_address' => 'required',
-                'bio' => 'nullable',
+                'district_id' => 'required',
+                'division_id' => 'required',
                 'company_country' => 'required',
-                'industry_type' => 'required',
                 'establishment_date' => 'required',
-                'company_size' => 'required',
+                'company_business' => 'required',
                 'website' => 'required',
                 'vision' => 'nullable',
                 'facebook_url' => 'nullable',

@@ -15,6 +15,8 @@
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @include('sweetalert::sweetalert')
     <div class="app-wrapper"> <!--begin::Header-->
 
         @include('layouts.backend.header')
@@ -241,7 +243,9 @@
             option_sparkline3,
         );
         sparkline3.render();
-    </script> <!--end::Script-->
-</body><!--end::Body-->
+    </script> 
+
+        
+</body>
 
 </html>

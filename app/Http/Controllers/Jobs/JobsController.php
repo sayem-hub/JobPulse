@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Jobs;
 
 use App\Models\Job;
+use App\Models\Skill;
 use App\Models\Degree;
 use App\Models\Company;
 use App\Models\JobType;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use Wavey\Sweetalert\Sweetalert;
 
 class JobsController extends Controller
 {
@@ -28,11 +30,11 @@ class JobsController extends Controller
     {
         $loggedInUser = Auth::user();
         $loggedInUserCompanyList = Company::where('user_id', $loggedInUser->id)->get();
-
+        $skills = Skill::all();
         $degreeList = Degree::all();
         $categoryList = JobCategory::all();
         $jobTypeList = JobType::all();
-        return view('jobs.create', compact('loggedInUserCompanyList', 'degreeList', 'categoryList', 'jobTypeList'));
+        return view('jobs.create', compact('loggedInUserCompanyList', 'degreeList', 'categoryList', 'jobTypeList', 'skills'));
     }
 
     public function storeJob(Request $request)
@@ -70,7 +72,10 @@ class JobsController extends Controller
             return redirect()->route('jobs.index')->with('success', 'Job created successfully.');
 
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
+            Log::error($e->getMessage());
+            Sweetalert::error('Error', $e->getMessage());
+            return;
+            // return redirect()->back()->withErrors($e->getMessage());
         }
 
     }

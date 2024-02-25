@@ -10,12 +10,15 @@ class Company extends Model
     use HasFactory;
 
     protected $fillable = [
+        'organization_type',
         'company_name',
         'company_email',
         'company_phone',
+        'district_id',
+        'division_id',
         'company_address',
         'company_country',
-        'industry_type',
+        'company_business',
         'establishment_date',
         'company_size',
         'logo',

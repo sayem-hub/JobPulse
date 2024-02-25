@@ -23,7 +23,7 @@
       </div>
 
       <div class="col-md-2">
-        <label for="vacancy" class="form-label">Number of Post</label>
+        <label for="vacancy" class="form-label">Number of Vaccany</label>
         <input type="text" class="form-control" id="vacancy" name="vacancy">
       </div>
 
@@ -46,6 +46,16 @@
                <option value="{{ $degree->id }}">{{ $degree->name }}</option>
             @endforeach
           </select>
+       </div>
+
+       <div class="col-md-6">
+         <label for="skills" class="form-label">Skill</label>
+       <select name="skills[]" multiple class="form-select">
+         <option selected>--Select--</option>
+         @foreach($skills as $skill)
+             <option value="{{ $skill->id }}">{{ $skill->skill_name }}</option>
+         @endforeach
+     </select>
        </div>
 
 

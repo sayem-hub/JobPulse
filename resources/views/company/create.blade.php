@@ -13,9 +13,20 @@
                 <div class="row g-3">
 
                     <div class="input-group-sm col-md-6">
+                        <label for="organization_type">Your Organization Type</label>
+                        <select class="form-select" name="organization_type">
+                            <option value="" selected readonly>--Select--</option>
+                            <option value="Government">Government</option>
+                            <option value="Semi Government">Semi Government</option>
+                            <option value="NGO">NGO</option>
+                            <option value="Private Firm/Company">Private Firm/Company</option>
+                            <option value="International Agency">International Agency</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group-sm col-md-6">
                         <label for="company_name">Company Name</label>
                         <input type="text" class="form-control text-primary" id="company_name" name="company_name">
-
                     </div>
 
                     <div class="input-group-sm col-md-6">
@@ -30,19 +41,40 @@
                     </div>
 
                     <div class="input-group-sm col-md-6">
+                        <label for="district_id">District</label>
+                        <select class="form-select" name="district_id">
+                            <option value="" selected readonly>--Select--</option>
+                           @foreach ($districts as $district)
+                               <option value="{{ $district->id }}">{{ $district->name }}</option>
+                           @endforeach
+                        </select>
+                    </div>
+
+                    <div class="input-group-sm col-md-6">
+                        <label for="division_id">Division</label>
+                        <select class="form-select" name="division_id">
+                            <option value="" selected readonly>--Select--</option>
+                           @foreach ($divisions as $division)
+                               <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                           @endforeach
+                        </select>
+                    </div>
+
+                    <div class="input-group-sm col-md-6">
                         <label for="company_address">Address</label>
                         <input type="text" class="form-control text-primary" id="company_address" name="company_address">
                     </div>
 
                     <div class="input-group-sm col-md-6">
                         <label for="company_country">Country</label>
-                        <input type="text" class="form-control text-primary" id="company_country" name="company_country">
+                        <input type="text" class="form-control text-primary" id="company_country" name="company_country" value="Bangladesh">
                     </div>
 
 
+
                     <div class="input-group-sm col-md-6">
-                        <label for="industry_type">Company/Industry Type</label>
-                        <select class="form-select" name="industry_type">
+                        <label for="company_business">Company Business</label>
+                        <select class="form-select" name="company_business">
                             <option value="" selected readonly>--Select--</option>
                             <option value="Manufacturer">Manufacturer</option>
                             <option value="Supplier">Supplier</option>
