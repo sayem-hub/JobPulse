@@ -27,7 +27,6 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
-
         try {
             $validatedData = $request->validate([
                 'organization_type' => 'required',

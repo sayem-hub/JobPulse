@@ -21,6 +21,7 @@
         <thead>
             <tr class="text-center">
                 <th>SN</th>
+                <th>Posting Date</th>
                 <th>Published Date</th>
                 <th>Company Name</th>
                 <th>Designation</th>
@@ -28,9 +29,10 @@
                 <th>Job Category</th>
                 <th>Type</th>
                 <th>Degree</th>
-                <th>Min Salary</th>
-                <th>Max Salary</th>
-                <th>Job Location</th>
+                <th>Experience</th>
+                <th>Salary Range</th>
+                <th>Work Place</th>
+                <th>Location</th>
                 <th>Deadline</th>
                 <th>Is Featured</th>
                 <th>Status</th>
@@ -45,15 +47,17 @@
                 <tr class="text-center">
                     <th>{{ ++$key }}</th>
                     <td>{{ $job->created_at }}</td>
+                    <td>{{ $job->published_at }}</td>
                     <td>{{ $job->company->company_name }}</td>
                     <td>{{ $job->job_title }}</td>
                     <td>{{ $job->vacancy }}</td>
                     <td>{{ $job->jobCategory->name }}</td>
                     <td>{{ $job->jobType->name }}</td>
                     <td>{{ $job->degrees->name }}</td>
-                    <td>{{ $job->min_salary }}</td>
-                    <td>{{ $job->max_salary }}</td>
-                    <td>{{ $job->job_location }}</td>
+                    <td>{{ $job->experience_level }}</td>
+                    <td>{{ $job->salary_range }}</td>
+                    <td>{{ $job->work_place }}</td>
+                    <td>{{ $job->district->name }}, {{ $job->division->division_name }}</td>
                     <td>{{ $job->deadline }}</td>
                     @if ($job->is_featured == 1)
                     <td><span class="badge bg-success badge-success">Yes</span></td>

@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
             DivisionSeeder::class,
             DistrictSeeder::class,
             SkillSeeder::class,
+            JobCategorySeeder::class,
+            DegreeSeeder::class,
+            JobTypeSeeder::class
         ]);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

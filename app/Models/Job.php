@@ -8,7 +8,31 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     use HasFactory;
-    protected $fillable = ['company_id', 'job_category_id', 'job_type_id', 'degree_id', 'job_title', 'job_description', 'vacancy', 'job_location', 'min_salary', 'max_salary', 'deadline', 'is_featured', 'status'];
+    protected $fillable = [
+        'company_id',
+        'job_category_id',
+        'job_type_id',
+        'degree_id',
+        'job_title',
+        'experience_level',
+        'requirements',
+        'responsibilities',
+        'vacancy',
+        'work_place',
+        'district_id',
+        'division_id',
+        'salary_range',
+        'salary_review',
+        'festival_bonus',
+        'age_range',
+        'gender',
+        'deadline',
+        'priority',
+        'is_featured',
+        'number_of_applications',
+        'status',
+        'published_at'
+    ];
 
     public function company()
     {
@@ -37,7 +61,17 @@ class Job extends Model
 
     public function skills()
     {
-        return $this->belongsToMany(Skill::class);
+        return $this->belongsToMany(Skill::class, 'job_skills');
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+
+    public function division()
+    {
+        return $this->belongsTo(Division::class);
     }
 
 }

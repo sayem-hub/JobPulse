@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Helper\ResponseHelper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class AuthController extends Controller
 {
     public function loginPage()
@@ -25,11 +25,13 @@ class AuthController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
 
+            Alert::success('Login Success', 'Welcome Back!');
             return redirect()->intended(route('dashboard'));
         } else {
 
-            return redirect()->back()->withErrors(['email' => 'The provided credentials do not match our records.']);
-        }
+       Alert::warning('Login Failed', 'Please check your credentials');
+       return back();
+}
     }
 
 

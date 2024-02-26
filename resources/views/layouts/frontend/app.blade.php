@@ -22,11 +22,12 @@
         <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}" />
         <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
         
+        
 
     </head>
     
     <body class="bg-white dark:bg-neutral-800">
-        
+     
             @include('layouts.frontend.header')
         
             @include('layouts.frontend.navbar')
@@ -68,5 +69,7 @@
 
         
         <script src="{{asset('assets/js/axios.min.js')}}"></script>
+
+        @include('sweetalert::alert')
 </body>
 </html>
