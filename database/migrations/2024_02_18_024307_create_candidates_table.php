@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('image')->nullable();
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('father_name');
             $table->string('mother_name');
             $table->date('date_of_birth');
@@ -31,10 +32,8 @@ return new class extends Migration
             $table->double('present_salary');
             $table->double('expected_salary');
             $table->text('career_objective');
-            $table->bigInteger('experience_id')->unsigned();
-            $table->foreign('experience_id')->references('id')->on('experiences')->onDelete('cascade')->onUpdate('cascade');
             $table->string('cv')->nullable();
-
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

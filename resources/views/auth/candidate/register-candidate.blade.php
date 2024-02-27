@@ -24,20 +24,33 @@
                             <div class="flex flex-col justify-center h-full p-12">
                                 <div class="text-center">
                                     <h5 class="text-[18.5px] text-white">Let's Get Started</h5>
-                                    <p class="mt-3 text-gray-50">Sign Up and get access to all the features of Jobcy</p>
+                                    <p class="mt-3 text-gray-50">Sign Up as a Candidate and get access to all the features of JobPulse</p>
                                 </div>
-                                <form action="index.html" class="mt-8">
+
+                                <form action="{{ route('register.candidate') }}" method="POST" id="candidateRegister" class="mt-8">
+                                    @csrf
                                     <div class="mb-5">
-                                        <label for="usernameInput" class="text-white">Username</label>
-                                        <input type="text" class="w-full mt-1 group-data-[theme-color=violet]:bg-violet-400/40 group-data-[theme-color=sky]:bg-sky-400/40 group-data-[theme-color=red]:bg-red-400/40 group-data-[theme-color=green]:bg-green-400/40 group-data-[theme-color=pink]:bg-pink-400/40 group-data-[theme-color=blue]:bg-blue-400/40 py-2.5 rounded border-transparent placeholder:text-sm placeholder:text-gray-50 text-white" required="" id="usernameInput" placeholder="Enter your username">
+                                        <label for="first_name" class="text-white">First Name</label>
+                                        <input type="text" class="w-full mt-1 group-data-[theme-color=violet]:bg-violet-400/40 group-data-[theme-color=sky]:bg-sky-400/40 group-data-[theme-color=red]:bg-red-400/40 group-data-[theme-color=green]:bg-green-400/40 group-data-[theme-color=pink]:bg-pink-400/40 group-data-[theme-color=blue]:bg-blue-400/40 py-2.5 rounded border-transparent placeholder:text-sm placeholder:text-gray-50 text-white" id="first_name" name="first_name" required   placeholder="Enter your first name">
+                                    </div>
+
+                                    <div class="mb-5">
+                                        <label for="last_name" class="text-white">Last Name</label>
+                                        <input type="text" class="w-full mt-1 group-data-[theme-color=violet]:bg-violet-400/40 group-data-[theme-color=sky]:bg-sky-400/40 group-data-[theme-color=red]:bg-red-400/40 group-data-[theme-color=green]:bg-green-400/40 group-data-[theme-color=pink]:bg-pink-400/40 group-data-[theme-color=blue]:bg-blue-400/40 py-2.5 rounded border-transparent placeholder:text-sm placeholder:text-gray-50 text-white" id="last_name" name="last_name" required placeholder="Enter your last name">
+                                    </div>
+
+                                    <div class="mb-5">
+                                        <label for="email" class="text-white">Email</label>
+                                        <input type="email" class="w-full mt-1 group-data-[theme-color=violet]:bg-violet-400/40 group-data-[theme-color=sky]:bg-sky-400/40 group-data-[theme-color=red]:bg-red-400/40 group-data-[theme-color=green]:bg-green-400/40 group-data-[theme-color=pink]:bg-pink-400/40 group-data-[theme-color=blue]:bg-blue-400/40 py-2.5 rounded border-transparent placeholder:text-sm placeholder:text-gray-50 text-white" id="email" name="email" required  placeholder="Enter your email">
+                                    </div>
+
+                                    <div class="mb-5">
+                                        <label for="phone" class="text-white">Phone</label>
+                                        <input type="text" class="w-full mt-1 group-data-[theme-color=violet]:bg-violet-400/40 group-data-[theme-color=sky]:bg-sky-400/40 group-data-[theme-color=red]:bg-red-400/40 group-data-[theme-color=green]:bg-green-400/40 group-data-[theme-color=pink]:bg-pink-400/40 group-data-[theme-color=blue]:bg-blue-400/40 py-2.5 rounded border-transparent placeholder:text-sm placeholder:text-gray-50 text-white" id="phone" name="phone" required  placeholder="Enter your phone">
                                     </div>
                                     <div class="mb-5">
-                                        <label for="passwordInput" class="text-white">Email</label>
-                                        <input type="email" class="w-full mt-1 group-data-[theme-color=violet]:bg-violet-400/40 group-data-[theme-color=sky]:bg-sky-400/40 group-data-[theme-color=red]:bg-red-400/40 group-data-[theme-color=green]:bg-green-400/40 group-data-[theme-color=pink]:bg-pink-400/40 group-data-[theme-color=blue]:bg-blue-400/40 py-2.5 rounded border-transparent placeholder:text-sm placeholder:text-gray-50 text-white" required="" id="emailInput" placeholder="Enter your email">
-                                    </div>
-                                    <div class="mb-5">
-                                        <label for="emailInput" class="text-white">Password</label>
-                                        <input type="password" class="w-full mt-1 group-data-[theme-color=violet]:bg-violet-400/40 group-data-[theme-color=sky]:bg-sky-400/40 group-data-[theme-color=red]:bg-red-400/40 group-data-[theme-color=green]:bg-green-400/40 group-data-[theme-color=pink]:bg-pink-400/40 group-data-[theme-color=blue]:bg-blue-400/40 py-2.5 rounded border-transparent placeholder:text-sm placeholder:text-gray-50 text-white" id="passwordInput" placeholder="Enter your password">
+                                        <label for="password" class="text-white">Password</label>
+                                        <input type="password" class="w-full mt-1 group-data-[theme-color=violet]:bg-violet-400/40 group-data-[theme-color=sky]:bg-sky-400/40 group-data-[theme-color=red]:bg-red-400/40 group-data-[theme-color=green]:bg-green-400/40 group-data-[theme-color=pink]:bg-pink-400/40 group-data-[theme-color=blue]:bg-blue-400/40 py-2.5 rounded border-transparent placeholder:text-sm placeholder:text-gray-50 text-white" id="password" name="password" placeholder="Enter your password" required>
                                     </div>
                                     <div class="mb-4">
                                         <div><input class="align-middle border-transparent rounded focus:ring-0 focus:ring-offset-0 group-data-[theme-color=violet]:checked:bg-violet-500 group-data-[theme-color=sky]:checked:bg-sky-500 group-data-[theme-color=red]:checked:bg-red-500 group-data-[theme-color=green]:checked:bg-green-500 group-data-[theme-color=pink]:checked:bg-pink-500 group-data-[theme-color=blue]:checked:bg-blue-500" type="checkbox" id="flexCheckDefault">
@@ -49,7 +62,7 @@
                                     </button></div>
                                 </form>
                                 <div class="text-center">
-                                    <p class="text-white">Already a member ? <a href="sign-in.html" class="text-white underline fw-medium"> Sign In </a></p>
+                                    <p class="text-white">Already a member ? <a href="{{ route('login.page') }}" class="text-white underline fw-medium"> Sign In </a></p>
                                 </div>
                             </div>
                         </div>
@@ -61,4 +74,6 @@
     </div>
 </section>
 
+<script>
+    
 @endsection

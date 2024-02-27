@@ -83,7 +83,7 @@
        <div class="input-group-sm form-group">
          <label for="responsibilities">Job Description/Responsibilities</label>
          <ul id="responsibilities-list">
-           
+          
          </ul>
          <button type="button" id="add-responsibility-btn" class="btn btn-sm btn-info">Add Responsibility</button>
          <input type="hidden" name="responsibilities[]" id="responsibilities-input" value="">

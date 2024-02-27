@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Back\CandidateController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\Back\CompanyController;
 use App\Http\Controllers\Jobs\JobsController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Jobs\DegreeController;
@@ -29,6 +30,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/register/candidate', [AuthController::class, 'candidateRegisterPage'])->name('register.candidate.page');
+Route::post('/register/candidate', [AuthController::class, 'candidateRegister'])->name('register.candidate');
 
 
 
@@ -45,6 +47,17 @@ Route::post('/dashboard/company/store', [CompanyController::class, 'store'])->na
 
 Route::post('/dashboard/company/update/{id}', [CompanyController::class, 'update'])->name('company.update');
 Route::get('/dashboard/company-profile/{id}', [DashboardController::class, 'companyProfile'])->name('company.profile');
+
+// Route::group(['middleware' => 'role:candidate'], function () {
+Route::get('/candidate/dashboard', [DashboardController::class, 'candidateDashboard'])->name('candidate.dashboard');
+Route::get('/candidate/resume-create', [CandidateController::class, 'createResume'])->name('candidate.resume.create');
+Route::post('/candidate/resume-store', [CandidateController::class, 'storeResume'])->name('candidate.resume.store');
+Route::get('/candidate/resume/view/{id}', [CandidateController::class, 'candidateResumeView'])->name('candidate.resume.view');
+Route::get('/candidate/resume/edit', [CandidateController::class, 'candidateResumeEdit'])->name('candidate.resume.edit');
+Route::post('/candidate/resume/update', [CandidateController::class, 'candidateResumeUpdate'])->name('candidate.resume.update');
+
+Route::get('/candidate/job-application', [CandidateController::class, 'candidateJobApplication'])->name('candidate.jobs.application');
+// });
 
 
 //Jobs Route

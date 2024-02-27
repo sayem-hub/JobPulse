@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Helper\ResponseHelper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use RealRashid\SweetAlert\Facades\Alert;
 class AuthController extends Controller
 {
@@ -103,9 +104,12 @@ class AuthController extends Controller
                 'role' => "candidate",
             ]);
 
-            return ResponseHelper::Out('success', $candidate, 200);
+            Alert::success('Registration Success', 'Welcome to the Job Pulse!');
+            return redirect()->route('login.page');
         } catch (Exception $e) {
-            return ResponseHelper::Out('error', $e, 200);
+            Log::error($e->getMessage());
+            Alert::warning('Registration Failed', 'Please check your credentials!');
+            return redirect()->back();
         }
     }
 

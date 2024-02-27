@@ -82,21 +82,39 @@
 
 
 
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="responsibilities">Job Responsibilities</label>
                 <ul id="responsibilities-list">
-                  @if ($existingResponsibilities)
-                    
-                
-                    @foreach(json_decode($existingResponsibilities[0]) as $responsibility)
-                        <li>{{ $responsibility }}</li>
-                    @endforeach
+                    @if ($existingResponsibilities)
+                        @foreach(json_decode($existingResponsibilities) as $responsibility)
+                            <li>
+                                <input type="text" name="existing_responsibilities[]" value="{{ $responsibility }}">
+                                <button type="button" class="btn btn-sm btn-danger remove-responsibility-btn">Remove</button>
+                            </li>
+                        @endforeach
                     @endif
                 </ul>
                 <button type="button" id="add-responsibility-btn" class="btn btn-sm btn-info">Add Responsibility</button>
-                <input type="hidden" name="responsibilities" id="responsibilities-input" value="{{ $existingResponsibilities[0] }}">
+                <input type="hidden" name="responsibilities" id="responsibilities-input" value="{{ $existingResponsibilities }}">
             </div>
-            
+             --}}
+
+          
+             <div class="form-group">
+              <label for="responsibilities">Job Responsibilities</label>
+              <ul id="responsibilities-list">
+                  @if ($existingResponsibilities)
+                      @foreach ($existingResponsibilities as $responsibility)
+                          <li>
+                              <input type="text" name="existing_responsibilities[]" value="{{ $responsibility }}">
+                              <button type="button" class="btn btn-sm btn-danger remove-responsibility-btn">Remove</button>
+                          </li>
+                      @endforeach
+                  @endif
+              </ul>
+              <button type="button" id="add-responsibility-btn" class="btn btn-sm btn-info">Add Responsibility</button>
+              <input type="hidden" name="responsibilities" id="responsibilities-input" value="{{ json_encode($existingResponsibilities) }}">
+          </div>
 
 
               <div class="input-group-sm col-md-12">
@@ -222,21 +240,29 @@
 
    <script>
     $(document).ready(function() {
-        $('#add-responsibility-btn').click(function() {
-            var newResponsibility = prompt("Enter a new responsibility:");
-            if (newResponsibility) {
-                $('#responsibilities-list').append('<li>' + newResponsibility + '</li>');
-                updateResponsibilitiesInput();
-            }
-        });
-
-        function updateResponsibilitiesInput() {
-            var responsibilities = [];
-            $('#responsibilities-list li').each(function() {
-                responsibilities.push($(this).text());
-            });
-            $('#responsibilities-input').val(JSON.stringify(responsibilities));
+    // Add new responsibility
+    $('#add-responsibility-btn').click(function() {
+        var newResponsibility = prompt("Enter a new responsibility:");
+        if (newResponsibility) {
+            $('#responsibilities-list').append('<li><input type="text" name="new_responsibilities[]" value="' + newResponsibility + '"><button type="button" class="btn btn-sm btn-danger remove-responsibility-btn">Remove</button></li>');
+            updateResponsibilitiesInput();
         }
     });
+
+    // Remove responsibility
+    $(document).on('click', '.remove-responsibility-btn', function() {
+        $(this).closest('li').remove();
+        updateResponsibilitiesInput();
+    });
+
+    // Update hidden input with responsibilities
+    function updateResponsibilitiesInput() {
+        var responsibilities = [];
+        $('#responsibilities-list li input').each(function() {
+            responsibilities.push($(this).val());
+        });
+        $('#responsibilities-input').val(JSON.stringify(responsibilities));
+    }
+});
 </script>
     @endsection

@@ -26,6 +26,8 @@ class JobsController extends Controller
             ->whereHas('company', function ($query) use ($user_id) {
                 $query->where('user_id', $user_id);
             })->get();
+
+            // dd($jobs);
         return view('jobs.index', compact('jobs'));
     }
 
@@ -78,7 +80,7 @@ class JobsController extends Controller
                 'job_title' => $request->input('job_title'),
                 'experience_level' => $request->input('experience_level'),
                 'requirements' => $request->input('requirements'),
-                'responsibilities' => json_encode($request->input('responsibilities')),
+                'responsibilities' => json_encode(json_decode($request->responsibilities[0])),
                 'vacancy' => $request->input('vacancy'),
                 'work_place' => $request->input('work_place'),
                 'district_id' => $request->input('district_id'),
@@ -122,7 +124,6 @@ class JobsController extends Controller
         $loggedInUserCompanyList = Company::where('user_id', $loggedInUser->id)->get();
         $job = Job::with('skills')->findOrFail($id);
         $existingResponsibilities = json_decode($job->responsibilities);
-        // dd($existingResponsibilities);
         $degreeList = Degree::all();
         $categoryList = JobCategory::all();
         $jobTypeList = JobType::all();
@@ -167,7 +168,7 @@ class JobsController extends Controller
                 'job_title' => $request->input('job_title'),
                 'experience_level' => $request->input('experience_level'),
                 'requirements' => $request->input('requirements'),
-                'responsibilities' => json_encode($request->input('responsibilities')),
+                'responsibilities' => $request->responsibilities,
                 'vacancy' => $request->input('vacancy'),
                 'work_place' => $request->input('work_place'),
                 'district_id' => $request->input('district_id'),
@@ -186,13 +187,15 @@ class JobsController extends Controller
             $job = Job::findOrFail($id);
 
             DB::beginTransaction();
+            $job->skills()->detach();
+
+            if ($request->has('skills')) {
+                foreach ($request->input('skills') as $skill) {
+                    $job->skills()->attach($skill);
+                }
+            }
 
             $job->update($data);
-
-            foreach ($request->input('skills') as $skill) {
-                $job = Job::latest()->first();
-                $job->skills()->attach($skill);
-            }
 
             DB::commit();
 
