@@ -12,26 +12,26 @@
                     <h6 class="mb-3 text-sm text-gray-900 uppercase dark:text-gray-50">We have 150,000+ live jobs</h6>
                     <h1 class="mb-3 text-5xl font-semibold leading-tight text-gray-900 dark:text-gray-50">Find your dream jobs <br> with <span class="font-bold group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500">Jobcy</span></h1>
                     <p class="text-lg font-light text-gray-500 whitespace-pre-line dark:text-gray-300">Find jobs, create trackable resumes and enrich your
-                            applications.Carefully crafted after analyzing the needs of different 
+                            applications. Carefully crafted after analyzing the needs of different 
                             industries.</p>
                 </div>
-                <form action="#">
+                <form action="{{ route('jobs.search') }}" method="GET">
                     <div class="registration-form">
                         <div class="grid grid-cols-12">
                             <div class="col-span-12 xl:col-span-4">
                                 <div class="mt-3 rounded-l filter-search-form filter-border mt-md-0">
                                     <i class="uil uil-briefcase-alt"></i>
-                                    <input type="search" id="job-title" class="w-full filter-input-box placeholder:text-gray-100 placeholder:text-13 dark:text-gray-100" placeholder="Job, Company name...">
+                                    <input type="search" name="query" id="txtSearch" value="{{ request()->input('query') }}" class="w-full filter-input-box placeholder:text-gray-100 placeholder:text-13 dark:text-gray-100" placeholder="Job title, Company name...">
                                 </div>
                             </div><!--end col-->
                             <div class="col-span-12 xl:col-span-4">
                                 <div class="mt-3 filter-search-form mt-md-0">
-                                    <i class="uil uil-map-marker"></i>
+                                    <i class="fa-solid fa-list"></i>
                                     <select class="form-select" data-trigger name="choices-single-location" id="choices-single-location" aria-label="Default select example">
-                                        <option value="AF">Afghanistan</option>
-                                        <option value="AX">&Aring;land Islands</option>
-                                        <option value="AL">Albania</option>
-                                        <option value="DZ">Algeria</option>
+                                        <option value="">Category</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
                                     
                                     </select>
                                 </div>

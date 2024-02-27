@@ -18,6 +18,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
 Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('jobs/search', [PageController::class, 'jobSearch'])->name('jobs.search');
 Route::get('/about-us', [PageController::class, 'aboutUs'])->name('about-us');
 Route::get('/contact-us', [PageController::class, 'contactUs'])->name('contact-us');
 
