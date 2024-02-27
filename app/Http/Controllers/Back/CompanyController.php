@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Back;
 
-use App\Http\Controllers\Controller;
 use Exception;
 use App\Models\Company;
 use App\Models\District;
 use App\Models\Division;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CompanyController extends Controller
 {
@@ -52,11 +53,12 @@ class CompanyController extends Controller
             $validatedData['user_id'] = $user->id;
             Company::create($validatedData);
 
-
-            return redirect()->route('dashboard')->with('success', 'Company created successfully!');
+            Alert::success('Success', 'Company created successfully!');
+            return redirect()->route('dashboard');
         } catch (Exception $e) {
             Log::error($e->getMessage());
-            return redirect()->back()->withErrors('error', $e->getMessage());
+            Alert::error('Error', 'Company creation failed!');
+            return redirect()->back()->withInput();
         }
 
     }

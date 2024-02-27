@@ -15,7 +15,7 @@
                 </li>
 
 
-                @if (Auth::user()->role == ['admin', 'company'])
+                @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
                     <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
                         <p>
                             Company
@@ -35,7 +35,7 @@
                 @endif
 
 
-                @if (Auth::user()->role == 'admin')
+                @if (Auth::user()->role == 'admin' || 'company')
                 <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
                     <p>
                         Jobs
@@ -53,8 +53,9 @@
                 </ul>
             </li>
 
-
-           
+            @endif
+            
+            @if (Auth::user()->role == 'admin')
             <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
                 <p>
                     Jobs Category
