@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 @section('title', 'Companies')
 @section('content')
-<div class="container">
+<div class="container-fluid">
 
     <h3 class="text-center">Jobs List</h3>
     @if (session('success'))
@@ -58,8 +58,6 @@
                     <td>{{ $job->requirements }}</td>
                     <td>{{ $job->degrees->name }}</td>
                     <td>{{ $job->experience_level }}</td>
-                   
-                   
                     <td>{{ $job->salary_range }}</td>
                     <td>{{ $job->work_place }}</td>
                     <td>{{ $job->district->name }}, {{ $job->division->division_name }}</td>
@@ -71,12 +69,14 @@
                     <td><span class="badge bg-warning badge-warning">No</span></td>
                     @endif
                     
-                    @if ($job->status == 'active')
-                    <td><span class="badge bg-success badge-success">Active</span></td>
+                    @if ($job->status == 'published')
+                    <td><span class="badge bg-success badge-success">Published</span></td>
                     @elseif ($job->status == 'pending')
                     <td><span class="badge bg-warning badge-warning">Pending</span></td>
-                    @else
+                    @elseif ($job->status == 'expired')
                     <td><span class="badge bg-danger badge-danger">Expired</span></td>
+                    @else
+                    <td><span class="badge bg-secondary badge-secondary">Declined</span></td>
                     @endif
                    
                     <td><a href="{{ route('jobs.edit', $job->id) }}" class="btn btn-primary btn-sm">Edit</td>

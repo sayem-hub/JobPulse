@@ -41,6 +41,10 @@ return new class extends Migration {
             $table->integer('number_of_applications')->default(0);
             $table->enum('status', ['pending', 'published', 'declined', 'expired'])->default('pending');
             $table->dateTime('published_at')->nullable();
+            $table->bigInteger('created_by')->unsigned();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->bigInteger('updated_by')->unsigned();
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();
         });
     }

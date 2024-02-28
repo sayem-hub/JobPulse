@@ -19,6 +19,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('jobs/search', [PageController::class, 'jobSearch'])->name('jobs.search');
+Route::get('/jobs/categories', [PageController::class, 'jobsByCategory'])->name('jobs.categories');
 Route::get('/about-us', [PageController::class, 'aboutUs'])->name('about-us');
 Route::get('/contact-us', [PageController::class, 'contactUs'])->name('contact-us');
 
@@ -57,7 +58,10 @@ Route::get('/candidate/resume/view/{id}', [CandidateController::class, 'candidat
 Route::get('/candidate/resume/edit', [CandidateController::class, 'candidateResumeEdit'])->name('candidate.resume.edit');
 Route::post('/candidate/resume/update', [CandidateController::class, 'candidateResumeUpdate'])->name('candidate.resume.update');
 
-Route::get('/candidate/job-application', [CandidateController::class, 'candidateJobApplication'])->name('candidate.jobs.application');
+Route::post('apply-job/{jobId}', [PageController::class, 'applyJob'])->name('job.apply');
+
+Route::get('/candidate/application-list', [CandidateController::class, 'candidateApplicationList'])->name('candidate.application.list');
+
 // });
 
 

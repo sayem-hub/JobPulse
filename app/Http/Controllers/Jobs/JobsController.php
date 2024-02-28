@@ -21,11 +21,17 @@ class JobsController extends Controller
 {
     public function jobsIndex()
     {
-        $user_id = auth()->user()->id;
-        $jobs = Job::with('company')
-            ->whereHas('company', function ($query) use ($user_id) {
-                $query->where('user_id', $user_id);
-            })->get();
+        if (auth()->user()->role == 'company') {
+            
+            $user_id = auth()->user()->id;
+            $jobs = Job::with('company')
+                ->whereHas('company', function ($query) use ($user_id) {
+                    $query->where('user_id', $user_id);
+                })->get();
+        } else {
+
+            $jobs = Job::with('company')->get();
+        }
 
             // dd($jobs);
         return view('jobs.index', compact('jobs'));
@@ -33,8 +39,10 @@ class JobsController extends Controller
 
     public function createJob()
     {
-        $loggedInUser = Auth::user();
-        $loggedInUserCompanyList = Company::where('user_id', $loggedInUser->id)->get();
+       
+        $user_id = auth()->user()->id;
+        $loggedInUserCompanyList = Company::where('user_id', $user_id)->select('id', 'company_name')->get();
+        
         $skills = Skill::all();
         $degreeList = Degree::all();
         $categoryList = JobCategory::all();
@@ -95,6 +103,9 @@ class JobsController extends Controller
                 'is_featured' => $request->input('is_featured'),
             ];
 
+            $user_id = auth()->user()->id;
+            $data['created_by'] = $user_id;
+
             DB::beginTransaction();
 
             Job::create($data);
@@ -120,8 +131,13 @@ class JobsController extends Controller
 
     public function editJob($id)
     {
-        $loggedInUser = Auth::user();
-        $loggedInUserCompanyList = Company::where('user_id', $loggedInUser->id)->get();
+        if (auth()->user()->role == 'company') {
+            $user_id = auth()->user()->id;
+            $loggedInUserCompanyList = Company::where('user_id', $user_id)->select('id', 'company_name')->get();
+        } else {
+            $loggedInUserCompanyList = Company::select('id', 'company_name')->get();
+        }
+       
         $job = Job::with('skills')->findOrFail($id);
         $existingResponsibilities = json_decode($job->responsibilities);
         $degreeList = Degree::all();
@@ -158,6 +174,7 @@ class JobsController extends Controller
                 'deadline' => 'required',
                 'priority' => 'nullable',
                 'is_featured' => 'nullable',
+                'status' => 'nullable',
             ]);
 
             $data = [
@@ -181,9 +198,19 @@ class JobsController extends Controller
                 'deadline' => $request->input('deadline'),
                 'priority' => $request->input('priority'),
                 'is_featured' => $request->input('is_featured'),
+               
             ];
 
+            if (Auth::user()->role == 'company') {
+                $data['status'] = 'pending';
+            } else {
+                $data['status'] = $request->input('status');
+            }
 
+         if ($request->has('status') && $request->input('status') == 'published') {
+             $data['published_at'] = now();
+         }
+         
             $job = Job::findOrFail($id);
 
             DB::beginTransaction();
@@ -195,6 +222,10 @@ class JobsController extends Controller
                 }
             }
 
+            $user_id = auth()->user()->id;
+            $data['updated_by'] = $user_id;
+
+            // dd($data);
             $job->update($data);
 
             DB::commit();

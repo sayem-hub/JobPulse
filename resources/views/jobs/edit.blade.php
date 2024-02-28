@@ -210,17 +210,10 @@
               </select>
             </div>
 
-       
-
-
             <div class="input-group-sm col-md-3">
               <label for="deadline" >Application Deadline</label>
               <input type="date" class="form-control" id="deadline" name="deadline" value="{{ $job->deadline }}">
             </div>
-
-
-
-           
 
             <div class="input-group-sm col-md-6">
               <label for="is_featured">Do you want to feature list?</label>
@@ -230,6 +223,22 @@
                   <option value="0" {{ $job->is_featured == '0' ? 'selected' : '' }}>No</option>
               </select>
             </div>
+
+          
+              
+            @if (Auth::user()->role == 'admin')
+            <div class="input-group-sm col-md-6">
+              <label for="status">Status</label>
+              <select class="form-select" name="status">
+                  <option value="" disabled>--Select--</option>
+                  <option value="pending" {{ $job->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                  <option value="published" {{ $job->status == 'published' ? 'selected' : '' }}>Published</option>
+                  <option value="expired" {{ $job->status == 'expired' ? 'selected' : '' }}>Expired</option>
+                  <option value="declined" {{ $job->status == 'declined' ? 'selected' : '' }}>Declined</option>
+               
+              </select>
+            </div>
+            @endif
 
             <div class="col-12">
               <button type="submit" class="btn btn-primary">Update Job</button>

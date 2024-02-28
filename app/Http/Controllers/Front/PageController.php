@@ -4,16 +4,22 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\Job;
 use App\Models\District;
+use App\Models\Application;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PageController extends Controller
 {
     public function index()
     {
-        $categories = JobCategory::select('id', 'name')->get();
-        return view('pages.home', compact('categories'));
+        $categories = JobCategory::with('jobs')->select('id', 'name')->limit(8)->get();
+        $jobs = Job::where('status', '=', 'published')->with(['company'])->limit(15)->get();
+        return view('pages.home', compact('categories', 'jobs'));
     }
 
     public function jobSearch(Request $request)
@@ -40,6 +46,57 @@ class PageController extends Controller
             ->with('search_text', $search_text);
     }
 
+
+    public function jobsByCategory()
+    {
+        $categories = JobCategory::select('id', 'name')->get();
+        return view('pages.job-categories', [ 'categories' => $categories]);
+    }
+
+
+    public function applyJob(Request $request, $jobId)
+        {
+            $user_id = Auth::user()->id;
+
+            if (Application::where('user_id', $user_id)->where('job_id', $jobId)->exists()) {
+                Alert::error('Error', 'You have already applied for this job');
+                return redirect()->back();
+            }
+
+            $request->validate([
+                'cover_letter' => 'required',
+                'expected_salary' => 'nullable',
+            ]);
+
+        try { 
+
+            DB::beginTransaction();
+        
+            Application::create([
+                'job_id' => $jobId,
+                'user_id' => $user_id,
+                'cover_letter' => $request->cover_letter,
+                'expected_salary' => $request->expected_salary,
+            ]);
+
+            //Application count
+            $job = Job::find($jobId);
+            $job->number_of_applications = $job->number_of_applications + 1;
+            $job->save();
+
+            DB::commit();
+
+            Alert::success('Success', 'Application sent successfully');
+            return redirect()->back();
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+            Log::error($e->getMessage());
+
+            Alert::error('Error', $e->getMessage());
+            return redirect()->back();
+        }
+    }
 
     public function aboutUs()
     {

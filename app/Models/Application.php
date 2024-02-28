@@ -13,6 +13,8 @@ class Application extends Model
     protected $fillable = [
         'user_id',
         'job_id',
+        'cover_letter',
+        'expected_salary',
         'status',
     ];
 
@@ -25,6 +27,5 @@ class Application extends Model
     {
         return $this->belongsTo(Job::class);
     }
-
 
 }

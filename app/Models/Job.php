@@ -31,7 +31,9 @@ class Job extends Model
         'is_featured',
         'number_of_applications',
         'status',
-        'published_at'
+        'published_at',
+        'created_by',
+        'updated_by'
     ];
 
     public function company()
@@ -74,4 +76,13 @@ class Job extends Model
         return $this->belongsTo(Division::class);
     }
 
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
 }

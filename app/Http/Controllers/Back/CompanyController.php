@@ -17,7 +17,13 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $myCompanyList = Company::where('user_id', Auth::user()->id)->get();
+        if (auth()->user()->role == 'company') {
+            $user_id = auth()->user()->id;
+            $myCompanyList = Company::where('user_id', $user_id)->get();
+        } else {
+            $myCompanyList = Company::all();
+        }
+        
         return view('company.index', compact('myCompanyList'));
     }
     public function create()
