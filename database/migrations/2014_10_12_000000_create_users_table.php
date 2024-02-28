@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone')->unique()->nullable();
             $table->string('password');
             $table->enum('role', ['company', 'candidate', 'admin'])->default('candidate');
+            $table->tinyInteger('is_resume_created')->default(0);
             $table->rememberToken();
             $table->boolean('is_active')->default(1);
             $table->timestamps();

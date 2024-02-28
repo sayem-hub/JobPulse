@@ -60,7 +60,7 @@ Route::post('/candidate/resume/update', [CandidateController::class, 'candidateR
 
 Route::post('apply-job/{jobId}', [PageController::class, 'applyJob'])->name('job.apply');
 
-Route::get('/candidate/application-list', [CandidateController::class, 'candidateApplicationList'])->name('candidate.application.list');
+Route::get('/candidate/application-list', [CandidateController::class, 'jobApplicationList'])->name('application.index');
 
 // });
 

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -27,7 +28,11 @@ class DashboardController extends Controller
     public function candidateDashboard()
     {
         $loggedInUser = Auth::user();
+        $last7DaysJobPost = Job::whereDate('created_at', '>=', now()->subDays(7))->count();
         $totalJobsApplied = Application::where('user_id', $loggedInUser->id)->count();
-        return view('candidate.dashboard', compact('totalJobsApplied'));
+        $totalInterviewCall = Application::where('user_id', $loggedInUser->id)->where('interview_date', '!=', null)->count();
+        $lastResumeUpdate = Candidate::where('user_id', $loggedInUser->id)->max('updated_at');
+        $lastUpdate = Carbon::parse($lastResumeUpdate)->diffForHumans();
+        return view('candidate.dashboard', compact('totalJobsApplied', 'last7DaysJobPost', 'totalInterviewCall', 'lastUpdate'));
     }
 }

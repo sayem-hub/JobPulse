@@ -46,9 +46,9 @@ class Job extends Model
         return $this->belongsTo(JobCategory::class, 'job_category_id');
     }
 
-    public function appliedJobs()
+    public function application()
     {
-        return $this->hasMany(JobApplication::class, 'job_id', 'id');
+        return $this->hasMany(Application::class, 'job_id', 'id');
     }
 
     public function degrees()

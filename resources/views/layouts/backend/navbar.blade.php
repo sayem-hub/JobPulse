@@ -118,10 +118,16 @@
             </p>
         </a>
         <ul class="nav nav-treeview">
-            <li class="nav-item"> <a href="{{ route('candidate.resume.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+            @if (Auth::user()->is_resume_created == 0)
+            <li class="nav-item"> 
+                <a href="{{ route('candidate.resume.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle">
+
+                </i>
                     <p>Create</p>
                 </a> 
-            </li>
+            </li>  
+            @endif
+           
 
             <li class="nav-item"> 
                 <a href="{{ route('candidate.resume.view', ['id' => auth()->user()->id]) }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
@@ -138,7 +144,7 @@
 
 
         <li class="nav-item menu-open">
-                <a href="#" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>My Job Application</p></a>
+                <a href="{{ route('application.index') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>My Application</p></a>
         </li>
 
        

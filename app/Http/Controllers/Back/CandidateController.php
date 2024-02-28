@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
+use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CandidateController extends Controller
@@ -64,6 +65,11 @@ class CandidateController extends Controller
             $vaildatedData['user_id'] = auth()->user()->id;
 
             Candidate::create($vaildatedData);
+
+            $user = User::find(auth()->user()->id);
+            $user->is_resume_created = 1;
+            $user->save();
+        
             Alert::success('Success', 'Resume created successfully!');
             return redirect()->route('candidate.dashboard');
         } catch (Exception $e) {
@@ -73,7 +79,7 @@ class CandidateController extends Controller
         }
     }
 
-  
+
     public function candidateResumeView($id)
     {
         $authUser = auth()->user()->id;
@@ -81,10 +87,12 @@ class CandidateController extends Controller
         return view('candidate.view-resume', compact('resume'));
     }
 
-    public function candidateApplicationList()
+    public function jobApplicationList()
     {
-        $authUser = auth()->user()->id;
-        $jobApplications = Application::where('user_id', $authUser)->first();
-        return view('candidate.job-application', compact('jobApplications'));
+        $user_id = auth()->user()->id;
+        $jobApplications = Application::with('job')
+                            ->where('user_id', $user_id)->get();
+        // dd($jobApplications);
+        return view('candidate.job-application-index', compact('jobApplications'));
     }
 }

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->text('cover_letter');
             $table->double('expected_salary');
+            $table->tinyInteger('interview_status')->default('0');
+            $table->date('interview_date')->nullable();
             $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
