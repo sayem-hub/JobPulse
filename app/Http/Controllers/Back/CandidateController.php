@@ -82,17 +82,25 @@ class CandidateController extends Controller
 
     public function candidateResumeView($id)
     {
-        $authUser = auth()->user()->id;
-        $resume = Candidate::where('user_id', $authUser)->first();
+        if(auth()->user()->role == 'candidate') {
+            $authUser = auth()->user()->id;
+            $resume = Candidate::where('user_id', $authUser)->first();
+        } else {
+            $resume = Candidate::find($id);
+        }
+       
         return view('candidate.view-resume', compact('resume'));
     }
 
     public function jobApplicationList()
     {
         $user_id = auth()->user()->id;
+        $candidate = Candidate::where('user_id', $user_id)->first();
         $jobApplications = Application::with('job')
-                            ->where('user_id', $user_id)->get();
+                            ->where('candidate_id', $candidate->id)->get();
         // dd($jobApplications);
         return view('candidate.job-application-index', compact('jobApplications'));
     }
+
+
 }

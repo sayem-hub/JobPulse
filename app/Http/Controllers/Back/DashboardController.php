@@ -25,12 +25,29 @@ class DashboardController extends Controller
         return view('admin.dashboard', compact('totalJobs', 'publishedJobs', 'totalCompanies', 'totalCandidates'));
     }
 
+    public function companyDashboard()
+    {
+        $loggedInUserId= Auth::user()->id;
+        $company = Company::where('user_id', $loggedInUserId)->first();
+        $totalJobPost = Job::where('company_id', $company->id)->count();
+        
+        $activeJobs = Job::where('company_id', $company->id)->where('status', 'published')->count();
+        $pendingJobs = Job::where('company_id', $company->id)->where('status', 'pending')->count();
+        $expiredJobs = Job::where('company_id', $company->id)->where('status', 'expired')->count();
+
+        $totalApplicationReceived = Job::where('company_id', $company->id)->sum('number_of_applications');
+
+       
+        return view('company.dashboard', compact('totalJobPost', 'activeJobs', 'pendingJobs', 'expiredJobs', 'totalApplicationReceived'));
+    }
+
     public function candidateDashboard()
     {
         $loggedInUser = Auth::user();
+        $candidate = Candidate::where('user_id', $loggedInUser->id)->first();
         $last7DaysJobPost = Job::whereDate('created_at', '>=', now()->subDays(7))->count();
-        $totalJobsApplied = Application::where('user_id', $loggedInUser->id)->count();
-        $totalInterviewCall = Application::where('user_id', $loggedInUser->id)->where('interview_date', '!=', null)->count();
+        $totalJobsApplied = Application::where('candidate_id', $candidate->id)->count();
+        $totalInterviewCall = Application::where('candidate_id', $candidate->id)->where('interview_date', '!=', null)->count();
         $lastResumeUpdate = Candidate::where('user_id', $loggedInUser->id)->max('updated_at');
         $lastUpdate = Carbon::parse($lastResumeUpdate)->diffForHumans();
         return view('candidate.dashboard', compact('totalJobsApplied', 'last7DaysJobPost', 'totalInterviewCall', 'lastUpdate'));

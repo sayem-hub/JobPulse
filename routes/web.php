@@ -50,6 +50,7 @@ Route::post('/dashboard/company/store', [CompanyController::class, 'store'])->na
 Route::post('/dashboard/company/update/{id}', [CompanyController::class, 'update'])->name('company.update');
 Route::get('/dashboard/company-profile/{id}', [DashboardController::class, 'companyProfile'])->name('company.profile');
 
+//Candidate Dashboard
 // Route::group(['middleware' => 'role:candidate'], function () {
 Route::get('/candidate/dashboard', [DashboardController::class, 'candidateDashboard'])->name('candidate.dashboard');
 Route::get('/candidate/resume-create', [CandidateController::class, 'createResume'])->name('candidate.resume.create');
@@ -63,6 +64,13 @@ Route::post('apply-job/{jobId}', [PageController::class, 'applyJob'])->name('job
 Route::get('/candidate/application-list', [CandidateController::class, 'jobApplicationList'])->name('application.index');
 
 // });
+
+
+//Company Dashboard Route
+Route::get('/company/dashboard', [DashboardController::class, 'companyDashboard'])->name('company.dashboard');
+Route::get('/application-received', [CompanyController::class, 'getApplication'])->name('get.application.index');
+Route::get('/application-approval/{id}', [CompanyController::class, 'applicationApproval'])->name('application.approval');
+Route::post('/application-approval/update/{id}', [CompanyController::class, 'applicationApprovalUpdate'])->name('application.approval.update');
 
 
 //Jobs Route

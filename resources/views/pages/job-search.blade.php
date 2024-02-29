@@ -142,7 +142,7 @@
                                 <a href="javascript:void(0)" class="text-2xl text-white align-middle"><i class="mdi mdi-star"></i></a>
                             </div>
                             @endif
-                      
+                    
                             <div class="p-4">
                                 <div class="grid items-center grid-cols-12">
                                     <div class="col-span-12 lg:col-span-2">
@@ -151,7 +151,7 @@
                                         </div>
                                     </div>
                                     <!--end col-->
-                                  
+                                
                                     <div class="col-span-12 lg:col-span-3">
                                         <div class="mb-2 mb-md-0">
                                             <h5 class="mb-1 fs-18"><a href="job-details.html" class="text-gray-900 dark:text-gray-50">{{ $results->job_title }}</a>
@@ -159,8 +159,7 @@
                                             <p class="mb-0 text-gray-500 fs-14 dark:text-gray-300">{{ $results->company->company_name }}</p>
                                         </div>
                                     </div>
-                                  
-                                   
+
                                     <!--end col-->
                                     <div class="col-span-12 lg:col-span-3">
                                         <div class="mb-2 lg:flex">
@@ -209,7 +208,7 @@
                                        
 
                                         <div class="ltr:lg:text-right rtl:lg:text-left dark:text-gray-50">
-                                            <a href="#applicationModal" class="py-3 font-medium text-gray-800 dark:text-gray-50 btn-open-modal" data-tw-toggle="modal" data-tw-target="#modal-id_form" data-job-id="{{ $results->id }}">Apply Now<i class="mdi mdi-chevron-double-right"></i></a>
+                                            <a href="#applicationModal" class="py-3 font-medium text-gray-800 dark:text-gray-50 btn-open-modal" data-tw-toggle="modal" data-tw-target="#modal-id_form" data-job-id="{{ $results->id }}" data-company-id="{{ $results->company_id }}">Apply Now<i class="mdi mdi-chevron-double-right"></i></a>
                                         </div>
                                     </div>
 

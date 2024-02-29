@@ -17,7 +17,8 @@
                                 <form id="jobApplicationForm" action="" method="POST">
                                     @csrf
                                     
-                                    <input type="hidden" name="job_id" value="">
+                                    <input type="hidden" name="company_id" id="companyIdInput" value="">
+                                    
                                 <div class="mb-4">
                                     <label for="expected_salary" class="block text-gray-900 dark:text-gray-50 ltr:text-left rtl:text-right">Expected Salary</label>
                                     <input type="number" class="w-full mt-2 border-gray-100 rounded placeholder:text-13 placeholder:text-gray-200 focus:ring-1 focus:ring-violet-500 dark:bg-transparent dark:text-gray-50 dark:border-neutral-600" id="expected_salary" name="expected_salary" placeholder="Input expected salary here...">
@@ -57,11 +58,15 @@
         $(document).ready(function() {
             // Handle click event on Apply Now button
             $('.btn-open-modal').click(function() {
-                // Get the job ID from data attribute
+                // Get the job ID and company ID from data attributes
                 var jobId = $(this).data('job-id');
+                var companyId = $(this).data('company-id');
                 // Update the form action of the modal with the job ID
                 $('#jobApplicationForm').attr('action', '/apply-job/' + jobId);
+                // Set the company ID value in a hidden input field
+                $('#companyIdInput').val(companyId);
             });
         });
     </script>
+    
 </div>

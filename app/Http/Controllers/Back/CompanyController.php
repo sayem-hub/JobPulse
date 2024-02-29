@@ -6,9 +6,12 @@ use Exception;
 use App\Models\Company;
 use App\Models\District;
 use App\Models\Division;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Candidate;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -80,5 +83,41 @@ class CompanyController extends Controller
         $company = Company::find($id);
         $company->update($request->all());
         return redirect()->route('company.index')->with('success', 'Company updated successfully!');
+    }
+
+    public function getApplication()
+    {
+        if (Auth::user()->role == 'company') {
+            
+            $user_id = Auth::user()->id;
+            $company = Company::where('user_id', $user_id)->first();
+            $applications = Application::with(['candidate.experience', 'candidate.education'])->where('company_id', $company->id)->get();
+        } else {
+            $applications = Application::with(['candidate.experience', 'candidate.education'])->get();
+        }
+    //    dd($applications->toArray());
+        return view('company.application-received', compact('applications'));
+    }
+
+
+    public function applicationApproval($id)
+    {
+        $application = Application::find($id);
+        return view('company.application-approval', compact('application'));
+    
+    }
+
+
+    public function applicationApprovalUpdate(Request $request, $id)
+    {
+        $application = Application::find($id);
+
+        $application->update([
+            'interview_status' => $request->interview_status,
+            'interview_date' => $request->interview_date
+        ]);
+
+        Alert::success('Success', 'Application updated successfully!');
+        return redirect()->back();
     }
 }

@@ -11,16 +11,24 @@ class Application extends Model
 
 
     protected $fillable = [
-        'user_id',
         'job_id',
+        'company_id',
+        'candidate_id',
         'cover_letter',
         'expected_salary',
+        'interview_status',
+        'interview_date',
         'status',
     ];
 
-    public function user()
+    public function candidate()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Candidate::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 
     public function job()

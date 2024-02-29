@@ -53,7 +53,11 @@
                 </ul>
             </li>
 
+            <li class="nav-item menu-open">
+                <a href="{{ route('get.application.index') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Application Received</p></a>
+            </li>
             @endif
+
             
             @if (Auth::user()->role == 'admin')
             <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>

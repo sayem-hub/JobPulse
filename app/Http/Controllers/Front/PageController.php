@@ -9,6 +9,7 @@ use App\Models\JobCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Candidate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -42,6 +43,7 @@ class PageController extends Controller
             })
 
             ->paginate(50);
+            // dd($jobResults);
         return view('pages.job-search', ['jobResults' => $jobResults, 'categories' => $categories, 'locations' => $locations])
             ->with('search_text', $search_text);
     }
@@ -57,8 +59,14 @@ class PageController extends Controller
     public function applyJob(Request $request, $jobId)
         {
             $user_id = Auth::user()->id;
+            $candidate = Candidate::where('user_id', $user_id)->first();
 
-            if (Application::where('user_id', $user_id)->where('job_id', $jobId)->exists()) {
+            if (!Auth::user()) {
+                Alert::error('Error', 'Please login to apply');
+                return redirect()->back();
+            }
+
+            if (Application::where('candidate_id', $candidate->id)->where('job_id', $jobId)->exists()) {
                 Alert::error('Error', 'You have already applied for this job');
                 return redirect()->back();
             }
@@ -74,7 +82,8 @@ class PageController extends Controller
         
             Application::create([
                 'job_id' => $jobId,
-                'user_id' => $user_id,
+                'company_id' => $request->company_id,
+                'candidate_id' => $candidate->id,
                 'cover_letter' => $request->cover_letter,
                 'expected_salary' => $request->expected_salary,
             ]);

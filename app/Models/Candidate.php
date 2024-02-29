@@ -36,4 +36,19 @@ class Candidate extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function experience()
+    {
+        return $this->hasOne(CandidateExperience::class);
+    }
+
+    public function education()
+    {
+        return $this->hasMany(CandidateEducation::class);
+    }
+
+    public function application()
+    {
+        return $this->hasMany(Application::class);
+    }
 }

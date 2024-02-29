@@ -21,8 +21,8 @@
                         <th>Published Date</th>
                         <th>Application Date</th>
                         <th>Deadline</th>
+                        <th>Interview Status</th>
                         <th>Interview Date</th>
-                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,16 +39,17 @@
                         <td>{{ $jobApplication->job->published_at }}</td>
                         <td>{{ $jobApplication->created_at }}</td>
                         <td>{{ $jobApplication->job->deadline }}</td>
-                        <td>{{ $jobApplication->interview_date }}</td>
                         <td>
-                            @if ($jobApplication->status == 1)
+                            @if ($jobApplication->interview_status == 1)
                             <span class="badge bg-warning badge-warning">Pending</span>
-                            @elseif ($jobApplication->status == 2)
+                            @elseif ($jobApplication->interview_status == 2)
                             <span class="badge bg-success badge-success">Accepted</span>
-                            @elseif ($jobApplication->status == 0)
+                            @elseif ($jobApplication->interview_status == 0)
                             <span class="badge bg-danger badge-danger">Rejected</span>
                             @endif
                         </td>
+                        <td>{{ $jobApplication->interview_date }}</td>
+                        
                     </tr>
                     @endforeach
                 </tbody>

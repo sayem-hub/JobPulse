@@ -11,6 +11,6 @@ class CandidateExperience extends Model
 
     public function candidate()
     {
-        return $this->belongsTo(Candidate::class, 'candidate_id');
+        return $this->hasMany(Candidate::class);
     }
 }
