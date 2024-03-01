@@ -22,7 +22,7 @@ class JobsController extends Controller
     public function jobsIndex()
     {
         if (auth()->user()->role == 'company') {
-            
+
             $user_id = auth()->user()->id;
             $jobs = Job::with('company')
                 ->whereHas('company', function ($query) use ($user_id) {
@@ -33,22 +33,30 @@ class JobsController extends Controller
             $jobs = Job::with('company')->get();
         }
 
-            // dd($jobs);
+        // dd($jobs);
         return view('jobs.index', compact('jobs'));
     }
 
     public function createJob()
     {
-       
-        $user_id = auth()->user()->id;
+
+        $user_id = Auth::user()->id;
         $loggedInUserCompanyList = Company::where('user_id', $user_id)->select('id', 'company_name')->get();
-        
+        // dd($loggedInUserCompanyList);
         $skills = Skill::all();
         $degreeList = Degree::all();
         $categoryList = JobCategory::all();
         $jobTypeList = JobType::all();
         $districts = District::select('id', 'name')->get();
         $divisions = Division::all();
+
+        if (Auth::user()->role == 'company' && $loggedInUserCompanyList->count() == 0) {
+            Alert::warning('Please add your company first');
+            return redirect()->route('company.create');
+        } else {
+
+            $loggedInUserCompanyList = Company::select('id', 'company_name')->get();
+        }
         return view('jobs.create', compact('loggedInUserCompanyList', 'degreeList', 'categoryList', 'jobTypeList', 'skills', 'districts', 'divisions'));
     }
 
@@ -109,12 +117,12 @@ class JobsController extends Controller
             DB::beginTransaction();
 
             Job::create($data);
-            
+
             foreach ($request->input('skills') as $skill) {
                 $job = Job::latest()->first();
                 $job->skills()->attach($skill);
             }
-            
+
             DB::commit();
 
             Alert::success('Success', 'Job created successfully!');
@@ -124,7 +132,6 @@ class JobsController extends Controller
             DB::rollBack();
             Alert::warning('Error', 'Job creation failed! Try again.');
             return redirect()->back()->withInput();
-
         }
 
     }
@@ -137,7 +144,7 @@ class JobsController extends Controller
         } else {
             $loggedInUserCompanyList = Company::select('id', 'company_name')->get();
         }
-       
+
         $job = Job::with('skills')->findOrFail($id);
         $existingResponsibilities = json_decode($job->responsibilities);
         $degreeList = Degree::all();
@@ -198,7 +205,7 @@ class JobsController extends Controller
                 'deadline' => $request->input('deadline'),
                 'priority' => $request->input('priority'),
                 'is_featured' => $request->input('is_featured'),
-               
+
             ];
 
             if (Auth::user()->role == 'company') {
@@ -207,10 +214,10 @@ class JobsController extends Controller
                 $data['status'] = $request->input('status');
             }
 
-         if ($request->has('status') && $request->input('status') == 'published') {
-             $data['published_at'] = now();
-         }
-         
+            if ($request->has('status') && $request->input('status') == 'published') {
+                $data['published_at'] = now();
+            }
+
             $job = Job::findOrFail($id);
 
             DB::beginTransaction();

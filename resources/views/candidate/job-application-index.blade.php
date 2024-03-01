@@ -5,7 +5,7 @@
 <div class="container">
     
     <div class="row">
-        <h3 class="text-center">My Job Application Status</h3>
+        <h4 class="text-center">My Job Application Status</h4>
         
         <div class="col-md-12">
             <table class="table table-bordered table-sm text-center small">
@@ -25,6 +25,9 @@
                         <th>Interview Date</th>
                     </tr>
                 </thead>
+                @if (count($jobApplications) == 0)
+                <td colspan="12" class="text-center">No Application Found!</td>
+                @endif
                 <tbody>
                     @foreach ($jobApplications as $key => $jobApplication)
 

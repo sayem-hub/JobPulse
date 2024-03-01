@@ -87,10 +87,11 @@ class CompanyController extends Controller
 
     public function getApplication()
     {
-        if (Auth::user()->role == 'company') {
+        $user_id = Auth::user()->id;
+        $company = Company::where('user_id', $user_id)->first();
+
+        if (Auth::user()->role == 'company' && $company) {
             
-            $user_id = Auth::user()->id;
-            $company = Company::where('user_id', $user_id)->first();
             $applications = Application::with(['candidate.experience', 'candidate.education'])->where('company_id', $company->id)->get();
         } else {
             $applications = Application::with(['candidate.experience', 'candidate.education'])->get();

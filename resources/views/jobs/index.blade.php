@@ -42,7 +42,7 @@
             </tr>
         </thead>
         @if (count($jobs) == 0)
-            <td colspan="15" class="text-center">No Job Found!</td>
+            <td colspan="19" class="text-center">No Job Found!</td>
         @endif
         <tbody>
             @foreach ($jobs as $key => $job)

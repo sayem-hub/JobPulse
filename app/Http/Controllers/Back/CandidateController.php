@@ -82,11 +82,20 @@ class CandidateController extends Controller
 
     public function candidateResumeView($id)
     {
+
+        $authUser = auth()->user()->id;
         if(auth()->user()->role == 'candidate') {
-            $authUser = auth()->user()->id;
+            
             $resume = Candidate::where('user_id', $authUser)->first();
         } else {
             $resume = Candidate::find($id);
+        }
+
+        $candidate = Candidate::where('user_id', $authUser)->first();
+
+        if (!$candidate) {
+            Alert::warning('Warning', 'Please create your resume first!');
+            return redirect()->route('candidate.resume.create');
         }
        
         return view('candidate.view-resume', compact('resume'));
@@ -96,6 +105,11 @@ class CandidateController extends Controller
     {
         $user_id = auth()->user()->id;
         $candidate = Candidate::where('user_id', $user_id)->first();
+
+        if (!$candidate) {
+            Alert::warning('Warning', 'Please create your resume first!');
+            return redirect()->route('candidate.resume.create');
+        }
         $jobApplications = Application::with('job')
                             ->where('candidate_id', $candidate->id)->get();
         // dd($jobApplications);

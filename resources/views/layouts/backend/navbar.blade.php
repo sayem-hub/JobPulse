@@ -18,7 +18,7 @@
                 @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
                     <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
                         <p>
-                            Company
+                            Company List
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
