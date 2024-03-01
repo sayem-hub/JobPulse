@@ -6,8 +6,9 @@
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 <li class="nav-item menu-open"> 
                   @if (Auth::user()->role == 'admin')
+                  <a href="{{ route('admin.dashboard') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Dashboard</p></a>
                       @elseif (Auth::user()->role == 'company')
-                      <a href="{{ route('dashboard') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Dashboard</p></a>
+                      <a href="{{ route('company.dashboard') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Dashboard</p></a>
                   @else
                       <a href="{{ route('candidate.dashboard') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Dashboard</p></a>
                   @endif 
@@ -117,14 +118,14 @@
         @if (Auth::user()->role == 'candidate')
         <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
             <p>
-                My Resume
+                My Profile
                 <i class="nav-arrow bi bi-chevron-right"></i>
             </p>
         </a>
         <ul class="nav nav-treeview">
-            @if (Auth::user()->is_resume_created == 0)
+            @if (Auth::user()->is_profile_created == 0)
             <li class="nav-item"> 
-                <a href="{{ route('candidate.resume.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle">
+                <a href="{{ route('candidate.profile.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle">
 
                 </i>
                     <p>Create</p>
@@ -134,12 +135,12 @@
            
 
             <li class="nav-item"> 
-                <a href="{{ route('candidate.resume.view', ['id' => auth()->user()->id]) }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                <a href="{{ route('candidate.profile.view', ['id' => auth()->user()->id]) }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                     <p>View</p>
                 </a> 
             </li>
 
-            <li class="nav-item"> <a href="{{ route('candidate.resume.update') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+            <li class="nav-item"> <a href="{{ route('candidate.profile.update') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                     <p>Update</p>
                 </a> 
             </li>

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckRole
@@ -15,10 +16,9 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, ...$roles)
     {
-               if (!$request->user()) {
+            if (!$request->user()) {
             return redirect('/login');
         }
-
         
         foreach ($roles as $role) {
             if ($request->user()->role === $role) {
@@ -26,7 +26,8 @@ class CheckRole
             }
         }
 
-       
-        return redirect('/')->with('error', 'Unauthorized');
+    
+    Alert::warning('Error', 'Unauthorized');
+        return redirect('/');
     }
 }

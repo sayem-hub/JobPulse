@@ -59,13 +59,19 @@ class PageController extends Controller
     public function applyJob(Request $request, $jobId)
         {
             $user_id = Auth::user()->id;
-            $candidate = Candidate::where('user_id', $user_id)->first();
-
+            
             if (!Auth::user()) {
                 Alert::error('Error', 'Please login to apply');
                 return redirect()->back();
             }
+            
+            $candidate = Candidate::where('user_id', $user_id)->first();
 
+            if (!$candidate) {
+                Alert::error('Error', 'Please update your profile to apply');
+                return redirect()->back();
+            }
+            
             if (Application::where('candidate_id', $candidate->id)->where('job_id', $jobId)->exists()) {
                 Alert::error('Error', 'You have already applied for this job');
                 return redirect()->back();

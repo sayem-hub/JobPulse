@@ -5,10 +5,10 @@
 <div class="container">
 <div class="card">
     <div class="card-header">
-        <h5 class="text-center">Create Resume</h5>
+        <h5 class="text-center">Create Profile</h5>
     </div>
         <div class="card-body">
-            <form action="{{ route('candidate.resume.store') }}" method="POST">
+            <form action="{{ route('candidate.profile.store') }}" method="POST">
                 @csrf
                 <div class="row g-3">
 
@@ -128,7 +128,7 @@
 
                 </div>
                 <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-primary mt-6">Create Resume</button>
+                    <button type="submit" class="btn btn-primary mt-6">Create Profile</button>
 
                 </div>
 

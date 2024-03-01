@@ -2,7 +2,17 @@
     <div class="container-fluid"> <!--begin::Start Navbar Links-->
         <ul class="navbar-nav">
             <li class="nav-item"> <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i class="bi bi-list"></i> </a> </li>
-            <li class="nav-item d-none d-md-block"> <a href="{{ route('dashboard') }}" class="nav-link">Home</a> </li>
+            <li class="nav-item d-none d-md-block"> 
+                @if (Auth::user()->role == 'admin')
+                <a href="{{ route('admin.dashboard') }}" class="nav-link active"><p>Home</p></a>
+                    @elseif (Auth::user()->role == 'company')
+                    <a href="{{ route('company.dashboard') }}" class="nav-link active"><p>Home</p></a>
+                @else
+                    <a href="{{ route('candidate.dashboard') }}" class="nav-link active"><p>Home</p></a>
+                @endif 
+                
+              </li>
+            {{-- <li class="nav-item d-none d-md-block"> <a href="{{ route('dashboard') }}" class="nav-link">Home</a> </li> --}}
             <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">Contact</a> </li>
         </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
         <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search-->
@@ -72,6 +82,7 @@
                     <li class="user-header text-bg-primary"> <img src="{{ asset('assets/admin/assets/img/user2-160x160.jpg') }}" class="rounded-circle shadow" alt="User Image">
                         <p>
                             {{ Auth::user()->first_name }}
+                            <small>Role: {{ Auth::user()->role }}</small>
                             <small>Member since {{ Auth::user()->created_at }}</small>
                         </p>
                     </li> <!--end::User Image--> <!--begin::Menu Body-->

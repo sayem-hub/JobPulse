@@ -14,6 +14,8 @@
                 </li>
             </ul>
         </div>
+
+       @if (!Auth::check())
         <div class="col-span-6 flex justify-end items-center"> <!-- Updated this div -->
             <div class="relative dropdown">
                 <button class="px-4 dropdown-toggle" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -41,5 +43,6 @@
                 </ul>
             </div> 
         </div>
+        @endif
     </div>
 </div>

@@ -62,7 +62,7 @@
                 var jobId = $(this).data('job-id');
                 var companyId = $(this).data('company-id');
                 // Update the form action of the modal with the job ID
-                $('#jobApplicationForm').attr('action', '/apply-job/' + jobId);
+                $('#jobApplicationForm').attr('action', '/candidate/apply-job/' + jobId);
                 // Set the company ID value in a hidden input field
                 $('#companyIdInput').val(companyId);
             });

@@ -13,12 +13,12 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CandidateController extends Controller
 {
-    public function createResume()
+    public function createProfile()
     {
-        return view('candidate.create-resume');
+        return view('candidate.create-profile');
     }
 
-    public function storeResume(Request $request)
+    public function storeProfile(Request $request)
     {
         try {
             // dd($request->all());
@@ -67,10 +67,10 @@ class CandidateController extends Controller
             Candidate::create($vaildatedData);
 
             $user = User::find(auth()->user()->id);
-            $user->is_resume_created = 1;
+            $user->is_profile_created = 1;
             $user->save();
         
-            Alert::success('Success', 'Resume created successfully!');
+            Alert::success('Success', 'Profile created successfully!');
             return redirect()->route('candidate.dashboard');
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -80,25 +80,21 @@ class CandidateController extends Controller
     }
 
 
-    public function candidateResumeView($id)
+    public function candidateProfileView($id)
     {
+        $authUser = auth()->user();
 
-        $authUser = auth()->user()->id;
-        if(auth()->user()->role == 'candidate') {
-            
-            $resume = Candidate::where('user_id', $authUser)->first();
-        } else {
-            $resume = Candidate::find($id);
+        if ($authUser->role == 'candidate' && $authUser->is_profile_created == 0) {
+            Alert::warning('Warning', 'Please create your profile first!');
+            return redirect()->route('candidate.profile.create');
+        } else if ($authUser->role == 'candidate' && $authUser->is_profile_created == 1) {
+            $profile = Candidate::where('user_id', $authUser->id)->first();
+        
+            } else {
+            $profile = Candidate::find($id);
         }
 
-        $candidate = Candidate::where('user_id', $authUser)->first();
-
-        if (!$candidate) {
-            Alert::warning('Warning', 'Please create your resume first!');
-            return redirect()->route('candidate.resume.create');
-        }
-       
-        return view('candidate.view-resume', compact('resume'));
+        return view('candidate.view-profile', compact('profile'));
     }
 
     public function jobApplicationList()
@@ -107,8 +103,8 @@ class CandidateController extends Controller
         $candidate = Candidate::where('user_id', $user_id)->first();
 
         if (!$candidate) {
-            Alert::warning('Warning', 'Please create your resume first!');
-            return redirect()->route('candidate.resume.create');
+            Alert::warning('Warning', 'Please create your profile first!');
+            return redirect()->route('candidate.profile.create');
         }
         $jobApplications = Application::with('job')
                             ->where('candidate_id', $candidate->id)->get();

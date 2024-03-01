@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Log;
 use RealRashid\SweetAlert\Facades\Alert;
 class AuthController extends Controller
 {
+
+
+    public function adminLoginPage()
+    {
+        return view('admin.login');
+    }
+
     public function loginPage()
     {
         return view('auth.login');
@@ -25,16 +32,22 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             
+            if(Auth::user()->role == 'candidate'){
+                Alert::success('Login Success', 'Welcome Back!');
+                return redirect()->intended(route('candidate.dashboard'));
+            } else if(Auth::user()->role == 'company'){
+                Alert::success('Login Success', 'Welcome Back!');
+                return redirect()->intended(route('company.dashboard'));
+            } else if(Auth::user()->role == 'admin'){
+                Alert::success('Login Success', 'Welcome Back!');
+                return redirect()->intended(route('admin.dashboard'));
+            }else {
 
-            Alert::success('Login Success', 'Welcome Back!');
-            return redirect()->intended(route('dashboard'));
-        } else {
-
-       Alert::warning('Login Failed', 'Please check your credentials');
-       return back();
-}
+            Alert::warning('Login Failed', 'Please check your credentials');
+            return redirect()->back();
     }
-
+    }
+    }
 
     public function logout()
     {

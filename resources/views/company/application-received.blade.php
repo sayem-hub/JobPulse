@@ -35,8 +35,18 @@
                         <td>{{ $application->job->job_title }}</td>
                         <td>{{ $application->job->vacancy }}</td>
                         <td>{{ $application->candidate->first_name }} {{ $application->candidate->last_name }}</td>
+
+                        @if ($application->candidate->education->count() > 0)
                         <td>{{ $application->candidate->education[0]->degree }}</td>
+                        @else
+                        <td>N/A</td>
+                        @endif
+
+                        @if ($application->candidate->experience != null)
                         <td>{{ $application->candidate->experience->title }}</td>
+                        @else
+                        <td>N/A</td>
+                        @endif
                         <td>{{ \Carbon\Carbon::parse($application->candidate->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y Years %m Months %d Days') }}</td>
                         <td>{{ $application->created_at }}</td>
                         <td>

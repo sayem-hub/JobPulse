@@ -23,8 +23,10 @@ Route::get('/jobs/categories', [PageController::class, 'jobsByCategory'])->name(
 Route::get('/about-us', [PageController::class, 'aboutUs'])->name('about-us');
 Route::get('/contact-us', [PageController::class, 'contactUs'])->name('contact-us');
 
+//Admin login
+Route::get('/admin/login', [AuthController::class, 'adminLoginPage'])->name('admin.login.page');
+   
 //Auth Routes
-
 Route::get('/register/employer', [AuthController::class, 'employerRegisterPage'])->name('employer.register.page');
 Route::post('/register/employer', [AuthController::class, 'employerRegister'])->name('employer.register');
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login.page');
@@ -37,7 +39,7 @@ Route::post('/register/candidate', [AuthController::class, 'candidateRegister'])
 
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/dashboard/profile/{id}', [UserController::class, 'profile'])->name('user.profile');
 Route::get('/dashboard/profile/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/dashboard/profile/{id}/update', [UserController::class, 'update'])->name('profile.update');
@@ -51,19 +53,18 @@ Route::post('/dashboard/company/update/{id}', [CompanyController::class, 'update
 Route::get('/dashboard/company-profile/{id}', [DashboardController::class, 'companyProfile'])->name('company.profile');
 
 //Candidate Dashboard
-// Route::group(['middleware' => 'role:candidate'], function () {
-Route::get('/candidate/dashboard', [DashboardController::class, 'candidateDashboard'])->name('candidate.dashboard');
-Route::get('/candidate/resume-create', [CandidateController::class, 'createResume'])->name('candidate.resume.create');
-Route::post('/candidate/resume-store', [CandidateController::class, 'storeResume'])->name('candidate.resume.store');
-Route::get('/candidate/resume/view/{id}', [CandidateController::class, 'candidateResumeView'])->name('candidate.resume.view');
-Route::get('/candidate/resume/edit', [CandidateController::class, 'candidateResumeEdit'])->name('candidate.resume.edit');
-Route::post('/candidate/resume/update', [CandidateController::class, 'candidateResumeUpdate'])->name('candidate.resume.update');
+Route::prefix('candidate')->middleware(['role:candidate'])->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'candidateDashboard'])->name('candidate.dashboard');
+        Route::get('/profile-create', [CandidateController::class, 'createProfile'])->name('candidate.profile.create');
+        Route::post('/profile-store', [CandidateController::class, 'storeProfile'])->name('candidate.profile.store');
+        Route::get('/profile/view/{id}', [CandidateController::class, 'candidateProfileView'])->name('candidate.profile.view');
+        Route::get('/profile/edit', [CandidateController::class, 'candidateProfileEdit'])->name('candidate.profile.edit');
+        Route::post('/profile/update', [CandidateController::class, 'candidateProfileUpdate'])->name('candidate.profile.update');
 
-Route::post('apply-job/{jobId}', [PageController::class, 'applyJob'])->name('job.apply');
+        Route::post('/apply-job/{jobId}', [PageController::class, 'applyJob'])->name('job.apply');
+        Route::get('/application-list', [CandidateController::class, 'jobApplicationList'])->name('application.index');
 
-Route::get('/candidate/application-list', [CandidateController::class, 'jobApplicationList'])->name('application.index');
-
-// });
+});
 
 
 //Company Dashboard Route
