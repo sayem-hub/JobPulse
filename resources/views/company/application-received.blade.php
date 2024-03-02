@@ -61,7 +61,7 @@
                         <td>{{ $application->interview_date }}</td>
                         <td>{{ $application->job->status }}</td>
                         <td>
-                        <a href="{{ route('candidate.resume.view', $application->candidate->id) }}" class="btn btn-primary btn-sm">View Resume</a>
+                        <a href="{{ route('candidate.profile.view', $application->candidate->id) }}" class="btn btn-primary btn-sm">View Profile</a>
                         <a href="{{ route('application.approval', $application->id) }}" class="btn btn-info btn-sm">Approve/Reject</a>
                     </td>
                     </tr>

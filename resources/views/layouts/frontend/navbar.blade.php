@@ -2,7 +2,7 @@
     <div class="mx-auto container-fluid">
         <div class="flex flex-wrap items-center justify-between mx-auto">
             <a href="{{ route('home') }}" class="flex items-center">
-                <img src="{{ asset('assets/images/logo-dark_e.png') }}" alt="" class="logo-dark_e h-[22px] block dark:hidden">
+                <img src="{{ asset('assets/images/logo-dark_custom.png') }}" alt="logo" style="height: 60px">
                 
             </a>
             <button data-collapse-toggle="navbar-collapse" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg navbar-toggler group lg:hidden hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
