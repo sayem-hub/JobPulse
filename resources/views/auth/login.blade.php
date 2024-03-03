@@ -37,7 +37,7 @@
                                         <input type="password" class="w-full mt-1 group-data-[theme-color=violet]:bg-violet-400/40 group-data-[theme-color=sky]:bg-sky-400/40 group-data-[theme-color=red]:bg-red-400/40 group-data-[theme-color=green]:bg-green-400/40 group-data-[theme-color=pink]:bg-pink-400/40 group-data-[theme-color=blue]:bg-blue-400/40 py-2.5 rounded border-transparent placeholder:text-sm placeholder:text-gray-50 text-white" id="password" name="password" placeholder="Enter your password">
                                     </div>
                                     <div ><input class="align-middle border-transparent rounded focus:ring-0 focus:ring-offset-0 group-data-[theme-color=violet]:checked:bg-violet-500 group-data-[theme-color=sky]:checked:bg-sky-500 group-data-[theme-color=red]:checked:bg-red-500 group-data-[theme-color=green]:checked:bg-green-500 group-data-[theme-color=pink]:checked:bg-pink-500 group-data-[theme-color=blue]:checked:bg-blue-500" type="checkbox" id="flexCheckDefault">
-                                        <a href="reset-password.html" class="text-white ltr:float-right rtl:float-left">Forgot Password?</a>
+                                        <a href="{{ route('forgot.password.form') }}" class="text-white ltr:float-right rtl:float-left">Forgot Password?</a>
                                         <label class="text-white align-middle" for="flexCheckDefault">Remember me</label>
                                     </div>
                                     <div class="my-8 text-center">

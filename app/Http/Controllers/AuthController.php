@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use Carbon\Carbon;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Helper\ResponseHelper;
+use App\Mail\ForgotPasswordMail;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
+
 class AuthController extends Controller
 {
 
@@ -46,7 +52,7 @@ class AuthController extends Controller
 
         if (Auth::check()) {
             return redirect()->intended(route(Auth::user()->role . '.dashboard'));
-            
+
         } else if (Auth::attempt($credentials)) {
             
             if(Auth::user()->role == 'candidate'){
@@ -140,6 +146,71 @@ class AuthController extends Controller
             Alert::warning('Registration Failed', 'Please check your credentials!');
             return redirect()->back();
         }
+    }
+
+    public function forgotPasswordForm()
+    {
+        return view('auth.forgot-password-form');
+    }
+
+    public function submitForgotPasswordForm(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users',
+        ]);
+
+        $user = DB::table('password_reset_tokens')->where('email', $request->email)->first();
+        if($user) {
+            Alert::warning('Password reset link already sent', 'Please check your inbox!');
+            return redirect()->back();
+        }
+
+        $token = Str::random(64); 
+        $email = $request->email;
+        
+
+        DB::table('password_reset_tokens')->insert([
+            'email' => $email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
+        
+        Mail::to($email)->send(new ForgotPasswordMail($email, $token));
+        Alert::success('Password Reset Link Sent', 'Please check your inbox!');
+        return redirect()->back();
+    }
+
+
+    public function resetPasswordForm($token)
+    {
+        return view('auth.reset-password-form', compact('token'));
+    }
+
+    public function submitResetPasswordForm(Request $request)
+    {
+
+        // dd($request->all());
+        $request->validate([
+            'email' => 'required|email|exists:users',
+            'password' => 'required|string|min:5|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+        $updatePassword = DB::table('password_reset_tokens')->where([
+            'email' => $request->email, 'token' => $request->token
+        ])->first();
+
+        if(!$updatePassword){
+            Alert::warning('Invalid Token', 'Please try again!');
+            return redirect()->back()->withInput();
+        }
+
+        $user = User::where('email', $request->email)
+            ->update(['password' => Hash::make($request->password)]);
+
+        DB::table('password_reset_tokens')->where(['email'=> $request->email])->delete();
+        Alert::success('Password Reset Success', 'Please login with your new password!');
+        return redirect()->route('login.page');
+
     }
 
 }

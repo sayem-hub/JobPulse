@@ -29,7 +29,13 @@ Route::post('/admin/login', [AuthController::class, 'adminLogin'])->name('admin.
 Route::get('/register/employer', [AuthController::class, 'employerRegisterPage'])->name('employer.register.page');
 Route::post('/register/employer', [AuthController::class, 'employerRegister'])->name('employer.register');
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login.page');
-Route::post('/login', [AuthController::class, 'login'])->name('login'); // <- Make sure you have this route
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::get('forgot-password', [AuthController::class, 'forgotPasswordForm'])->name('forgot.password.form');
+Route::post('forgot-password', [AuthController::class, 'submitForgotPasswordForm'])->name('forgot.password.submit');
+
+Route::get('reset-password/{token}', [AuthController::class, 'resetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 
 
