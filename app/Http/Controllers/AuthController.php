@@ -37,7 +37,8 @@ class AuthController extends Controller
         }
 
         
-        return redirect()->route('login.page')->with('error', 'Invalid admin credentials');
+        Alert::warning('Login Error', 'Invalid admin credentials');
+        return redirect()->back();
     }
     
 
@@ -212,5 +213,7 @@ class AuthController extends Controller
         return redirect()->route('login.page');
 
     }
+
+
 
 }

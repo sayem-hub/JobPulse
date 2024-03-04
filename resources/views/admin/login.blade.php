@@ -72,6 +72,8 @@
             }
         });
     </script> <!--end::OverlayScrollbars Configure--> <!--end::Script-->
+
+@include('sweetalert::alert')
 </body><!--end::Body-->
 
 </html>
