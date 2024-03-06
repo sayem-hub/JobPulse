@@ -48,7 +48,6 @@ class DashboardController extends Controller
         }
 
 
-
         return view('company.dashboard', compact('totalJobPost', 'activeJobs', 'pendingJobs', 'expiredJobs', 'totalApplicationReceived'));
     }
 
@@ -74,4 +73,7 @@ class DashboardController extends Controller
         }
         return view('candidate.dashboard', compact('totalJobsApplied', 'last7DaysJobPost', 'totalInterviewCall', 'resumeUpdate'));
     }
+
+
+    
 }

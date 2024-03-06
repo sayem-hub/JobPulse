@@ -2,13 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Back\CandidateController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Back\CompanyController;
 use App\Http\Controllers\Jobs\JobsController;
 use App\Http\Controllers\Front\PageController;
+use App\Http\Controllers\Back\PluginController;
 use App\Http\Controllers\Jobs\DegreeController;
+use App\Http\Controllers\Back\CompanyController;
 use App\Http\Controllers\Jobs\JobTypeController;
+use App\Http\Controllers\Back\CandidateController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Jobs\JobsCategoryController;
 
@@ -87,6 +88,10 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('degree/edit/{id}', [DegreeController::class, 'editDegree'])->name('degree.edit');
                 Route::post('degree/update/{id}', [DegreeController::class, 'updateDegree'])->name('degree.update');
                 Route::post('degree/delete/{id}', [DegreeController::class, 'deleteDegree'])->name('degree.delete');
+
+                Route::get('/plugins', [PluginController::class, 'index'])->name('plugin.index');
+                Route::post('toggle-status', [PluginController::class, 'toggleStatus'])->name('toggleStatus');
+
         });
 
         

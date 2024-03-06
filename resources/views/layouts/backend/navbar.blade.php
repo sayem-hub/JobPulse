@@ -152,10 +152,24 @@
         <li class="nav-item menu-open">
                 <a href="{{ route('application.index') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>My Application</p></a>
         </li>
-
-       
-
       @endif
+
+{{-- plugins start --}}
+
+@if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
+
+<li class="nav-item menu-open">
+    <a href="{{ route('plugin.index') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Plugins</p></a>
+    </li>
+
+<li class="nav-item menu-open">
+<a href="{{ route('get.application.index') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Account Settings</p></a>
+</li>
+@endif
+
+
+{{-- plugins end --}}
+
 
             </ul>
         </nav>
