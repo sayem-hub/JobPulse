@@ -154,21 +154,23 @@
         </li>
       @endif
 
-{{-- plugins start --}}
+            {{-- plugins start --}}
 
-@if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
+            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
 
-<li class="nav-item menu-open">
-    <a href="{{ route('plugin.index') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Plugins</p></a>
-    </li>
+            <li class="nav-item menu-open">
+                <a href="{{ route('plugin.index') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Plugins</p></a>
+                </li>
 
-<li class="nav-item menu-open">
-<a href="{{ route('get.application.index') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Account Settings</p></a>
-</li>
-@endif
-
-
-{{-- plugins end --}}
+            
+            @endif
+            {{-- plugins end --}}
+            
+           
+            <li class="nav-item menu-open">
+                <a href="{{ route('account.setting', Auth::user()->id) }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Account Settings</p></a>
+            </li>
+            
 
 
             </ul>

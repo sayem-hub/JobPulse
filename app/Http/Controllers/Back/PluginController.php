@@ -10,7 +10,9 @@ class PluginController extends Controller
 {
     public function index()
     {
+       
         $plugin = Plugin::firstOrFail();
+        // dd($plugin);
         return view('admin.plugins', compact('plugin'));
     }
 

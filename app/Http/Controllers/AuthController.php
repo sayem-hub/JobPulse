@@ -49,24 +49,28 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+    $credentials = $request->only('email', 'password');
 
-        if (Auth::check()) {
-            return redirect()->intended(route(Auth::user()->role . '.dashboard'));
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
 
-        } else if (Auth::attempt($credentials)) {
-            
-            if(Auth::user()->role == 'candidate'){
-                Alert::success('Login Success', 'Welcome Back!');
-                return redirect()->intended(route('candidate.dashboard'));
-            } else if(Auth::user()->role == 'company'){
+        $role = Auth::user()->role;
+        switch ($role) {
+            case 'company':
                 Alert::success('Login Success', 'Welcome Back!');
                 return redirect()->intended(route('company.dashboard'));
-            } else {
-                Alert::warning('Login Failed', 'Please check your credentials');
-                return redirect()->back();
-            }
+            case 'candidate':
+                Alert::success('Login Success', 'Welcome Back!');
+                return redirect()->intended(route('candidate.dashboard'));
+            default:
+                Auth::logout();
+                Alert::warning('Login Error', 'Unauthorized Access');
+                return redirect()->route('login.page');
         }
+    }
+
+    Alert::error('Login Failed', 'The provided credentials do not match our records.');
+    return back();
     }
     
     

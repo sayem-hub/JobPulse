@@ -120,7 +120,7 @@
                     
                     <div class="relative dropdown ltr:mr-4 rtl:ml-4">
                         <button type="button" class="flex items-center px-4 py-5 dropdown-toggle" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <img class="w-8 h-8 rounded-full ltr:xl:mr-2 rtl:xl:ml-2" src="{{ asset('assets/images/user/img-02.jpg') }}" alt="Header Avatar">
+                            <img class="w-8 h-8 rounded-full ltr:xl:mr-2 rtl:xl:ml-2" src="{{ asset(Auth::user()->profile_pic) }}" alt="Header Avatar">
                             <span class="hidden fw-medium xl:block dark:text-gray-50">{{ Auth::user()->first_name }}</span>
                             
                         </button>

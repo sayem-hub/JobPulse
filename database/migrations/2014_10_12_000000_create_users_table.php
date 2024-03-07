@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('role', ['company', 'candidate', 'admin'])->default('candidate');
             $table->tinyInteger('is_profile_created')->default(0);
             $table->rememberToken();
+            $table->string('profile_pic')->nullable();
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });

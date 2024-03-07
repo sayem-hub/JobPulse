@@ -61,9 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::prefix('admin')->middleware(['role:admin'])->group(function () {
                 //Admin dashboard
                 Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-                Route::get('/dashboard/profile/{id}', [UserController::class, 'profile'])->name('user.profile');
-                Route::get('/dashboard/profile/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-                Route::post('/dashboard/profile/{id}/update', [UserController::class, 'update'])->name('profile.update'); 
+               
 
                   //Jobs Category
                 Route::get('/jobs-category', [JobsCategoryController::class, 'jobsCategory'])->name('category.index');
@@ -123,7 +121,9 @@ Route::group(['middleware' => 'auth'], function () {
         
         });
 
-
+        Route::get('/accounts-settings/{id}', [UserController::class, 'accountSettings'])->name('account.setting');
+        Route::post('/accounts-settings/{id}/update', [UserController::class, 'accountUpdate'])->name('account.update'); 
+        
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
