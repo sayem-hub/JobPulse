@@ -74,6 +74,6 @@
     </div>
 </section>
 
-<script>
+
     
 @endsection

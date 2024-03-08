@@ -61,7 +61,7 @@
                                     </button></div>
                                 </form>
                                 <div class="text-center">
-                                    <p class="text-white">Already a member ? <a href="sign-in.html" class="text-white underline fw-medium"> Sign In </a></p>
+                                    <p class="text-white">Already a member ? <a href="{{ route('login.page') }}" class="text-white underline fw-medium"> Sign In </a></p>
                                 </div>
                             </div>
                         </div>

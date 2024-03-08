@@ -17,6 +17,8 @@ class PluginSeeder extends Seeder
         $plugin->employee_status = 0;
         $plugin->blog_status = 0;
         $plugin->pages_status = 0;
+        $plugin->company_id = null;
+        $plugin->user_id = 1;
         $plugin->save();
     }
 }

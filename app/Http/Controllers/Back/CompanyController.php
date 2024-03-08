@@ -3,15 +3,17 @@
 namespace App\Http\Controllers\Back;
 
 use Exception;
+use App\Models\User;
+use App\Models\Plugin;
 use App\Models\Company;
 use App\Models\District;
 use App\Models\Division;
+use App\Models\Candidate;
 use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\Candidate;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -38,7 +40,7 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
-        try {
+       
             $validatedData = $request->validate([
                 'organization_type' => 'required',
                 'company_name' => 'required',
@@ -50,6 +52,7 @@ class CompanyController extends Controller
                 'division_id' => 'required',
                 'company_country' => 'required',
                 'establishment_date' => 'required',
+                'company_size' => 'required',
                 'company_business' => 'required',
                 'website' => 'required',
                 'vision' => 'nullable',
@@ -58,14 +61,29 @@ class CompanyController extends Controller
                 'linkedin_url' => 'nullable',
             ]);
 
+            try {
+
+                DB::beginTransaction();
+
             $user = Auth::user();
             $validatedData['user_id'] = $user->id;
-            Company::create($validatedData);
+            $company = Company::create($validatedData);
+            Plugin::create([
+                'employee_status' => 0,
+                'blog_status' => 0,
+                'pages_status' => 0,
+                'company_id' => $company->id,
+                'user_id' => $user->id,
+               
+            ]);
+
+            DB::commit();
 
             Alert::success('Success', 'Company created successfully!');
-            return redirect()->route('dashboard');
+            return redirect()->route(Auth::user()->role.'.dashboard');
         } catch (Exception $e) {
             Log::error($e->getMessage());
+            DB::rollBack();
             Alert::error('Error', 'Company creation failed!');
             return redirect()->back()->withInput();
         }

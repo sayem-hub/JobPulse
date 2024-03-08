@@ -173,9 +173,7 @@
             <div class="text-center">
                 <p class="mb-0 text-center text-white/50">
                     <script>document.write(new Date().getFullYear())</script>
-                    © Jobcy - Job Listing Page
-                        Template by
-                    <a href="https://themeforest.net/search/themesdesign" target="_blank" class="underline transition-all duration-300 hover:text-gray-50">Themesdesign</a>
+                    © JobPulse - Grab Your Job!
                 </p>
             </div>
         </div>

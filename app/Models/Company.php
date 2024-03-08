@@ -41,4 +41,9 @@ class Company extends Model
     {
         return $this->hasMany(Job::class, 'company_id');
     }
+
+    public function plugin()
+    {
+        return $this->hasOne(Plugin::class, 'company_id');
+    }
 }

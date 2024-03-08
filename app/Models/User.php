@@ -79,5 +79,10 @@ class User extends Authenticatable
         return $this->hasMany(CandidateExperience::class);
     }
 
+    public function plugin()
+    {
+        return $this->hasOne(Plugin::class, 'user_id');
+    }
+
     
 }

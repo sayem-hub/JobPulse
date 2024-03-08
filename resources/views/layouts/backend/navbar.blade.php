@@ -117,22 +117,20 @@
 
     
         @if (Auth::user()->role == 'candidate')
-        <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
-            <p>
-                My Profile
-                <i class="nav-arrow bi bi-chevron-right"></i>
-            </p>
-        </a>
+        <li class="nav-item"> 
+            <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
+            <p>My Profile<i class="nav-arrow bi bi-chevron-right"></i></p>
+            </a>
         <ul class="nav nav-treeview">
-            @if (Auth::user()->is_profile_created == 0)
-            <li class="nav-item"> 
-                <a href="{{ route('candidate.profile.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle">
+                @if (Auth::user()->is_profile_created == 0)
+                <li class="nav-item"> 
+                    <a href="{{ route('candidate.profile.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle">
 
-                </i>
-                    <p>Create</p>
-                </a> 
-            </li>  
-            @endif
+                    </i>
+                        <p>Create</p>
+                    </a> 
+                </li>  
+                @endif
            
 
             <li class="nav-item"> 
@@ -156,14 +154,11 @@
 
             {{-- plugins start --}}
 
-            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
-
+        @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
             <li class="nav-item menu-open">
                 <a href="{{ route('plugin.index') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i><p>Plugins</p></a>
-                </li>
-
-            
-            @endif
+            </li>   
+        @endif
             {{-- plugins end --}}
             
            

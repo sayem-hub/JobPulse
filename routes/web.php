@@ -29,6 +29,10 @@ Route::post('/admin/login', [AuthController::class, 'adminLogin'])->name('admin.
 //Auth Routes
 Route::get('/register/employer', [AuthController::class, 'employerRegisterPage'])->name('employer.register.page');
 Route::post('/register/employer', [AuthController::class, 'employerRegister'])->name('employer.register');
+
+Route::get('/register/candidate', [AuthController::class, 'candidateRegisterPage'])->name('register.candidate.page');
+Route::post('/register/candidate', [AuthController::class, 'candidateRegister'])->name('register.candidate');
+
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login.page');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
@@ -45,9 +49,7 @@ Route::post('reset-password', [AuthController::class, 'submitResetPasswordForm']
 Route::group(['middleware' => 'auth'], function () {
         //Candidate Dashboard
         Route::prefix('candidate')->middleware(['role:candidate'])->group(function () {
-                Route::get('/dashboard', [DashboardController::class, 'candidateDashboard'])->name('candidate.dashboard');
-                Route::get('/register/candidate', [AuthController::class, 'candidateRegisterPage'])->name('register.candidate.page');
-                Route::post('/register/candidate', [AuthController::class, 'candidateRegister'])->name('register.candidate');
+                Route::get('/dashboard', [DashboardController::class, 'candidateDashboard'])->name('candidate.dashboard'); 
                 Route::get('/profile-create', [CandidateController::class, 'createProfile'])->name('candidate.profile.create');
                 Route::post('/profile-store', [CandidateController::class, 'storeProfile'])->name('candidate.profile.store');
                 Route::get('/profile/view/{id}', [CandidateController::class, 'candidateProfileView'])->name('candidate.profile.view');
@@ -87,8 +89,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::post('degree/update/{id}', [DegreeController::class, 'updateDegree'])->name('degree.update');
                 Route::post('degree/delete/{id}', [DegreeController::class, 'deleteDegree'])->name('degree.delete');
 
-                Route::get('/plugins', [PluginController::class, 'index'])->name('plugin.index');
-                Route::post('toggle-status', [PluginController::class, 'toggleStatus'])->name('toggleStatus');
+               
 
         });
 
@@ -118,6 +119,8 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/company-list', [CompanyController::class, 'index'])->name('company.index');
                 
                 Route::get('/jobs', [JobsController::class, 'jobsIndex'])->name('jobs.index');
+                Route::get('/plugins', [PluginController::class, 'index'])->name('plugin.index');
+                Route::post('toggle-status', [PluginController::class, 'toggleStatus'])->name('toggleStatus');
         
         });
 
