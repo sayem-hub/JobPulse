@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
-@section('title', 'Profile')
+@section('title', 'Edit Company')
 @section('content')
-
+<div class="container">
 
 <div class="card">
     <div class="card-header">
@@ -42,18 +42,18 @@
 
                     <div class="input-group-sm col-md-6">
                         <label for="industry_type">Company/Industry Type</label>
-                        <select class="form-select" name="industry_type">
+                        <select class="form-select" name="company_business">
                             <option value="" selected readonly>--Select--</option>
-                            <option value="Manufacturer" {{ $company->industry_type == 'Manufacturer' ? 'selected' : '' }}>Manufacturer</option>
-                            <option value="Supplier" {{ $company->industry_type == 'Supplier' ? 'selected' : '' }}>Supplier</option>
-                            <option value="Service" {{ $company->industry_type == 'Service' ? 'selected' : '' }}>Service</option>
-                            <option value="Consultant" {{ $company->industry_type == 'Consultant' ? 'selected' : '' }}>Consultant</option>
-                            <option value="Importer" {{ $company->industry_type == 'Importer' ? 'selected' : '' }}>Importer</option>
-                            <option value="Exporter" {{ $company->industry_type == 'Exporter' ? 'selected' : '' }}>Exporter</option>
-                            <option value="Trader" {{ $company->industry_type == 'Trader' ? 'selected' : '' }}>Trader</option>
-                            <option value="Wholesaler" {{ $company->industry_type == 'Wholesaler' ? 'selected' : '' }}>Wholesaler</option>
-                            <option value="Transport" {{ $company->industry_type == 'Transport' ? 'selected' : '' }}>Transport</option>
-                            <option value="Other" {{ $company->industry_type == 'Other' ? 'selected' : '' }}>Other</option>
+                            <option value="Manufacturer" {{ $company->company_business == 'Manufacturer' ? 'selected' : '' }}>Manufacturer</option>
+                            <option value="Supplier" {{ $company->company_business == 'Supplier' ? 'selected' : '' }}>Supplier</option>
+                            <option value="Service" {{ $company->company_business == 'Service' ? 'selected' : '' }}>Service</option>
+                            <option value="Consultant" {{ $company->company_business == 'Consultant' ? 'selected' : '' }}>Consultant</option>
+                            <option value="Importer" {{ $company->company_business == 'Importer' ? 'selected' : '' }}>Importer</option>
+                            <option value="Exporter" {{ $company->company_business == 'Exporter' ? 'selected' : '' }}>Exporter</option>
+                            <option value="Trader" {{ $company->company_business == 'Trader' ? 'selected' : '' }}>Trader</option>
+                            <option value="Wholesaler" {{ $company->company_business == 'Wholesaler' ? 'selected' : '' }}>Wholesaler</option>
+                            <option value="Transport" {{ $company->company_business == 'Transport' ? 'selected' : '' }}>Transport</option>
+                            <option value="Other" {{ $company->company_business == 'Other' ? 'selected' : '' }}>Other</option>
                         </select>
                     </div>
 
@@ -87,6 +87,35 @@
                         <input type="text" class="form-control text-primary" id="linkedin_url" name="linkedin_url" value="{{ $company->linkedin_url }}">
                     </div>
 
+                    @if (auth()->user()->role == 'admin')
+                        <div class="input-group-sm col-md-4">
+                            <label for="is_verified">Is Verified</label>
+                            <select class="form-select" name="is_verified">
+                                <option value="1" {{ $company->is_verified == 1 ? 'selected' : '' }}>Yes</option>
+                                <option value="0" {{ $company->is_verified == 0 ? 'selected' : '' }}>No</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group-sm col-md-4">
+                            <label for="is_featured">Is Featured</label>
+                            <select class="form-select" name="is_featured">
+                                <option value="1" {{ $company->is_featured == 1 ? 'selected' : '' }}>Yes</option>
+                                <option value="0" {{ $company->is_featured == 0 ? 'selected' : '' }}>No</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group-sm col-md-4">
+                            <label for="is_active">Is Active</label>
+                            <select class="form-select" name="is_active">
+                                <option value="1" {{ $company->is_active == 1 ? 'selected' : '' }}>Active</option>
+                                <option value="0" {{ $company->is_active == 0 ? 'selected' : '' }}>Inactive</option>
+                            </select>
+                        </div>
+
+
+                    @endif
+
+
 
                 </div>
                 <div class="d-flex justify-content-end mt-3">
@@ -98,5 +127,5 @@
         </div>
 </div>
 
-
-    @endsection
+</div>
+@endsection

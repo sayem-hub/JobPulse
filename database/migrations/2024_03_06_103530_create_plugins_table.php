@@ -16,6 +16,8 @@ return new class extends Migration
             $table->tinyInteger('employee_status')->default(0);
             $table->tinyInteger('blog_status')->default(0);
             $table->tinyInteger('pages_status')->default(0);
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();
         });
     }

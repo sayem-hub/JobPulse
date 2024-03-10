@@ -27,7 +27,6 @@ return new class extends Migration {
             $table->string('company_size')->nullable();
             $table->string('logo')->nullable();
             $table->string('website')->nullable();
-            $table->boolean('is_active')->default(1);
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->text('bio')->nullable();
@@ -35,6 +34,9 @@ return new class extends Migration {
             $table->string('facebook_url')->nullable();
             $table->string('twitter_url')->nullable();
             $table->string('linkedin_url')->nullable();
+            $table->tinyInteger('is_featured')->default(0);
+            $table->tinyInteger('is_verified')->default(0);
+            $table->tinyInteger('is_active')->default(0);
             $table->timestamps();
         });
     }

@@ -2,7 +2,6 @@
 @section('title', 'Profile')
 @section('content')
 
-
 <div class="card">
     <div class="card-header">
         <h5 class="text-center">Create Company</h5>

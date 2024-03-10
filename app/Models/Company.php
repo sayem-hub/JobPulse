@@ -29,6 +29,9 @@ class Company extends Model
         'facebook_url',
         'twitter_url',
         'linkedin_url',
+        'is_verified',
+        'is_featured',
+        'is_active',
     ];
 
 
@@ -42,8 +45,4 @@ class Company extends Model
         return $this->hasMany(Job::class, 'company_id');
     }
 
-    public function plugin()
-    {
-        return $this->hasOne(Plugin::class, 'company_id');
-    }
 }

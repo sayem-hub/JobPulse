@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth'], function () {
                 //Admin dashboard
                 Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
                
+                //Company Unapproved
+                Route::get('company-list/unapproved-company', [CompanyController::class, 'unapprovedCompany'])->name('unapproved.company');
 
                   //Jobs Category
                 Route::get('/jobs-category', [JobsCategoryController::class, 'jobsCategory'])->name('category.index');
@@ -90,7 +92,6 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::post('degree/delete/{id}', [DegreeController::class, 'deleteDegree'])->name('degree.delete');
 
                
-
         });
 
         
@@ -99,9 +100,7 @@ Route::group(['middleware' => 'auth'], function () {
                 //Company Dashboard Route
                 Route::get('/dashboard', [DashboardController::class, 'companyDashboard'])->name('company.dashboard');
                 Route::get('/dashboard/company/create', [CompanyController::class, 'create'])->name('company.create');
-                Route::get('/dashboard/company/edit/{id}', [CompanyController::class, 'edit'])->name('company.edit');
-                Route::post('/dashboard/company/store', [CompanyController::class, 'store'])->name('company.store');
-                Route::post('/dashboard/company/update/{id}', [CompanyController::class, 'update'])->name('company.update');
+               
                 Route::get('/dashboard/company-profile/{id}', [DashboardController::class, 'companyProfile'])->name('company.profile');
                 Route::get('/application-approval/{id}', [CompanyController::class, 'applicationApproval'])->name('application.approval');
                 Route::post('/application-approval/update/{id}', [CompanyController::class, 'applicationApprovalUpdate'])->name('application.approval.update');
@@ -117,6 +116,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::middleware(['role:admin,company'])->group(function () {
                 Route::get('/application-received', [CompanyController::class, 'getApplication'])->name('get.application.index');
                 Route::get('/company-list', [CompanyController::class, 'index'])->name('company.index');
+                Route::get('/dashboard/company/edit/{id}', [CompanyController::class, 'edit'])->name('company.edit');
+                Route::post('/dashboard/company/store', [CompanyController::class, 'store'])->name('company.store');
+                Route::post('/dashboard/company/update/{id}', [CompanyController::class, 'update'])->name('company.update');
+
+                
                 
                 Route::get('/jobs', [JobsController::class, 'jobsIndex'])->name('jobs.index');
                 Route::get('/plugins', [PluginController::class, 'index'])->name('plugin.index');

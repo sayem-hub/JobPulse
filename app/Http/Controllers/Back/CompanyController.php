@@ -26,21 +26,28 @@ class CompanyController extends Controller
             $user_id = auth()->user()->id;
             $myCompanyList = Company::where('user_id', $user_id)->get();
         } else {
-            $myCompanyList = Company::all();
+            $myCompanyList = Company::where('is_verified', 1)->get();
         }
         
         return view('company.index', compact('myCompanyList'));
     }
-    public function create()
-    {
-        $districts = District::select('id', 'name')->get();
-        $divisions = Division::all();
-        return view('company.create', compact('districts', 'divisions'));
-    }
 
-    public function store(Request $request)
-    {
-       
+        public function unapprovedCompany()
+        {
+            $unapprovedCompanies = Company::where('is_verified', 0)->get();
+            return view('company.unapproved-company', compact('unapprovedCompanies'));
+        }
+
+        public function create()
+        {
+            $districts = District::select('id', 'name')->get();
+            $divisions = Division::all();
+            return view('company.create', compact('districts', 'divisions'));
+        }
+
+        public function store(Request $request)
+        {
+        
             $validatedData = $request->validate([
                 'organization_type' => 'required',
                 'company_name' => 'required',
@@ -67,14 +74,12 @@ class CompanyController extends Controller
 
             $user = Auth::user();
             $validatedData['user_id'] = $user->id;
-            $company = Company::create($validatedData);
+            Company::create($validatedData);
             Plugin::create([
                 'employee_status' => 0,
                 'blog_status' => 0,
                 'pages_status' => 0,
-                'company_id' => $company->id,
                 'user_id' => $user->id,
-               
             ]);
 
             DB::commit();
@@ -99,8 +104,10 @@ class CompanyController extends Controller
     public function update(Request $request, $id)
     {
         $company = Company::find($id);
+        // dd($request->all());
         $company->update($request->all());
-        return redirect()->route('company.index')->with('success', 'Company updated successfully!');
+        Alert::success('Success', 'Company updated successfully!');
+        return redirect()->route('company.index');
     }
 
     public function getApplication()

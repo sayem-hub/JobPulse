@@ -25,28 +25,33 @@ class PageController extends Controller
 
     public function jobSearch(Request $request)
     {
-
         $categories = JobCategory::select('id', 'name')->get();
         $locations = District::select('name')->get();
-        $request->validate(([
+        $request->validate([
             'query' => 'required|min:3'
-        ]));
-
+        ]);
+    
         $search_text = $request->input('query');
-        $jobResults = Job::where('status', '=', 'published')->with(['jobCategory', 'company'])
-            ->where('job_title', 'LIKE', '%' . $search_text . '%')
-            ->orWhereHas('jobCategory', function ($q) use ($search_text) {
-                $q->where('name', 'LIKE', '%' . $search_text . '%');
+        $jobResults = Job::where('status', 'published')
+            ->whereHas('company', function ($query) {
+                $query->where('is_active', 1);
             })
-            ->orWhereHas('company', function ($q) use ($search_text) {
-                $q->where('company_name', 'LIKE', '%' . $search_text . '%');
+            ->with(['jobCategory', 'company'])
+            ->where(function ($query) use ($search_text) {
+                $query->where('job_title', 'LIKE', '%' . $search_text . '%')
+                    ->orWhereHas('jobCategory', function ($q) use ($search_text) {
+                        $q->where('name', 'LIKE', '%' . $search_text . '%');
+                    })
+                    ->orWhereHas('company', function ($q) use ($search_text) {
+                        $q->where('company_name', 'LIKE', '%' . $search_text . '%');
+                    });
             })
-
             ->paginate(50);
-            // dd($jobResults);
-        return view('pages.job-search', ['jobResults' => $jobResults, 'categories' => $categories, 'locations' => $locations])
-            ->with('search_text', $search_text);
+        
+        return view('pages.job-search', compact('jobResults', 'categories', 'locations', 'search_text'));
     }
+    
+    
 
 
     public function jobsByCategory()
