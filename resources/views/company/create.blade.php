@@ -72,9 +72,9 @@
 
 
                     <div class="input-group-sm col-md-6">
-                        <label for="company_business">Company Business</label>
+                        <label for="company_business">Company Business/Type</label>
                         <select class="form-select" name="company_business">
-                            <option value="" selected readonly>--Select--</option>
+                            <option value="" selected disabled>--Select--</option>
                             <option value="Manufacturer">Manufacturer</option>
                             <option value="Supplier">Supplier</option>
                             <option value="Service">Service</option>

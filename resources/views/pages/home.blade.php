@@ -1604,14 +1604,13 @@
             <!-- start client -->
                 <section class="py-10 dark:bg-neutral-800">
                     <div class="container mx-auto">
+                        <h4 class="p-3 text-center">Features Companies</h4>
                         <div class="grid grid-cols-12 gap-5">
-
                             @foreach ($featuredClients as $client)
-
                             <div class="col-span-12 lg:col-span-2">
-                                <img src="{{ $client->logo }}" alt="" class="mx-auto cursor-pointer h-9 lg:h-6 xl:h-9" data-tooltip-target="tooltip-default">
+                                <img src="{{ asset('uploads/company-logo/'. $client->logo) }}" alt="" class="mx-auto cursor-pointer h-9 lg:h-6 xl:h-9" data-tooltip-target="tooltip-default">
+                                <p>{{ $client->company_name }}</p>
                            </div>
-    
                             @endforeach
                         </div>
                     </div>

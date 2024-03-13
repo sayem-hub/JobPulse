@@ -8,7 +8,7 @@
         <h5 class="text-center">Edit Company</h5>
     </div>
         <div class="card-body">
-            <form action="{{ route('company.update', $company->id) }}" method="POST">
+            <form action="{{ route('company.update', $company->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row g-3">
 
@@ -32,17 +32,21 @@
                     <div class="input-group-sm col-md-6">
                         <label for="district_id">District</label>
                         <select class="form-select" name="district_id">
-                            <option value="" selected readonly>--Select--</option>
-                          
+                            <option value="" selected disabled>-- Select District --</option>
+                            @foreach ($districts as $district)
+                                <option value="{{ $district->id }}" {{ $company->district_id == $district->id ? 'selected' : '' }}>
+                                    {{ $district->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="input-group-sm col-md-6">
                         <label for="division_id">Division</label>
                         <select class="form-select" name="division_id">
-                            <option value="" selected readonly>--Select--</option>
+                            <option value="" selected disabled>--Select--</option>
                            @foreach ($divisions as $division)
-                               <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                               <option value="{{ $division->id }}" {{ $company->division_id == $division->id ? 'selected' : '' }}>{{ $division->division_name }}</option>
                            @endforeach
                         </select>
                     </div>
@@ -60,7 +64,7 @@
 
 
                     <div class="input-group-sm col-md-6">
-                        <label for="industry_type">Company/Industry Type</label>
+                        <label for="industry_type">Company Business/Type</label>
                         <select class="form-select" name="company_business">
                             <option value="" selected readonly>--Select--</option>
                             <option value="Manufacturer" {{ $company->company_business == 'Manufacturer' ? 'selected' : '' }}>Manufacturer</option>

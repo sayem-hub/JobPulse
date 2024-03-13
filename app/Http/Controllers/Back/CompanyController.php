@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Spatie\LaravelIgnition\Http\Requests\UpdateConfigRequest;
 
 class CompanyController extends Controller
 {
@@ -110,6 +111,7 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $company = Company::find($id);
+        
         $districts = District::select('id', 'name')->get();
         $divisions = Division::all();
         return view('company.edit', compact('company', 'districts', 'divisions'));
@@ -117,42 +119,55 @@ class CompanyController extends Controller
 
     public function update(Request $request, $id)
     {
-        $company = Company::find($id);
+        try {
+            DB::beginTransaction();
+    
+            $company = Company::find($id);
+            $request->validate([
+                'logo' => 'image|mimes:jpeg,png|max:2048', // Adjust max size as needed
+            ]);
+            // // Update company logo
+            // if ($request->hasFile('logo')) {
+            //     $file = $request->file('logo');
+            //     $filename = time() . '.' . $file->getClientOriginalExtension();
+            //     $file->move(public_path('uploads/company-logo'), $filename);
+    
+            //     // Debugging statement
+            //     Log::info('Image moved successfully. Filename: ' . $filename);
+    
+            //     $company->logo = $filename; // Update logo attribute with the filename
+    
+            //     // Debugging statement
+            //     Log::info('Filename assigned to company logo: ' . $company->logo);
+            // }
+    
+            // Update other company details
+            $company->update($request->all());
 
-           //Update company logo
-           if ($request->hasFile('logo')) {
-            $file = $request->file('logo');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('uploads/company-logo'), $filename);
-            $company->logo = $filename;
+            $company->fill($request->all());
+                if ($request->hasFile('logo')) {
+                    $file = $request->file('logo');
+                    $filename = time() . '.' . $file->getClientOriginalExtension();
+                    $file->move(public_path('uploads/company-logo'), $filename);
+                    $company->logo = $filename; // Update logo attribute with the filename
+                }
+
+                $company->save();
+    
+            DB::commit();
+    
+            Alert::success('Success', 'Company updated successfully!');
+            return redirect()->route('company.index');
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            DB::rollBack();
+            Alert::error('Error', 'Company update failed!');
+            return redirect()->back()->withInput();
         }
-
-        $company->update([
-            'company_name' => $request->company_name,
-            'company_email' => $request->company_email,
-            'company_phone' => $request->company_phone,
-            'company_address' => $request->company_address,
-            'district_id' => $request->district_id,
-            'division_id' => $request->division_id,
-            'company_country' => $request->company_country,
-            'establishment_date' => $request->establishment_date,
-            'company_size' => $request->company_size,
-            'company_business' => $request->company_business,
-            'website' => $request->website,
-            'vision' => $request->vision,
-            'facebook_url' => $request->facebook_url,
-            'twitter_url' => $request->twitter_url,
-            'linkedin_url' => $request->linkedin_url,
-            'is_verified' => $request->is_verified,
-            'is_featured' => $request->is_featured,
-            'is_active' => $request->is_active
-        ]);
-        
-     
-        
-        Alert::success('Success', 'Company updated successfully!');
-        return redirect()->route('company.index');
     }
+    
+
+    
 
     public function getApplication()
     {

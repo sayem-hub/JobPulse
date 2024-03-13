@@ -118,8 +118,8 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/application-received', [CompanyController::class, 'getApplication'])->name('get.application.index');
                 Route::get('/company-list', [CompanyController::class, 'index'])->name('company.index');
                 Route::get('/dashboard/company/create', [CompanyController::class, 'create'])->name('company.create');
-                Route::get('/dashboard/company/edit/{id}', [CompanyController::class, 'edit'])->name('company.edit');
                 Route::post('/dashboard/company/store', [CompanyController::class, 'store'])->name('company.store');
+                Route::get('/dashboard/company/edit/{id}', [CompanyController::class, 'edit'])->name('company.edit');
                 Route::post('/dashboard/company/update/{id}', [CompanyController::class, 'update'])->name('company.update');
 
                 
