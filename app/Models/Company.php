@@ -45,4 +45,14 @@ class Company extends Model
         return $this->hasMany(Job::class, 'company_id');
     }
 
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+
+    public function division()
+    {
+        return $this->belongsTo(Division::class);
+    }
+
 }

@@ -18,32 +18,36 @@
 
 
                 @if (Auth::user()->role == 'admin' || Auth::user()->role == 'company')
-                    <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
-                        <p>
-                            Companies
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
+                    <li class="nav-item"> 
+                        <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-seam-fill"></i>
+                        <p>Compnay<i class="nav-arrow bi bi-chevron-right"></i></p></a>
+
                     <ul class="nav nav-treeview">
                         <li class="nav-item"> <a href="{{ route('company.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Approved Companies</p>
+                            <p>{{ Auth::user()->role == 'admin' ? 'All Companies' : 'My Company' }}</p>
                             </a> 
                         </li>
 
-                        <li class="nav-item"> <a href="{{ route('unapproved.company') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                <p>Pending Company</p>
-                            </a> 
-                        </li>
-
+                      
                         <li class="nav-item"> <a href="{{ route('company.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                 <p>Add New Company</p>
                             </a> 
                         </li>
 
-                        <li class="nav-item"> <a href="{{ route('company.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                            <p>Featured Companies</p>
-                        </a> 
-                        </li>
+
+                            @if(Auth::user()->role == 'admin')
+                            <li class="nav-item"> <a href="{{ route('unapproved.company') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                    <p>Pending Company</p>
+                                </a> 
+                            </li>
+
+                            <li class="nav-item"> <a href="{{ route('featured.company') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Featured Companies</p>
+                                </a> 
+                            </li>
+                            @endif
+
+                       
                     </ul>
                 </li>
                 @endif

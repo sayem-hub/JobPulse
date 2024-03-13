@@ -7,7 +7,7 @@
         <h5 class="text-center">Create Company</h5>
     </div>
         <div class="card-body">
-            <form action="{{ route('company.store') }}" method="POST">
+            <form action="{{ route('company.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row g-3">
 
@@ -95,27 +95,33 @@
 
                     <div class="input-group-sm col-md-6">
                         <label for="company_size">Company Size</label>
-                        <input type="text" class="form-control text-primary" id="company_size" name="company_size">
+                        <input type="text" class="form-control" id="company_size" name="company_size">
                     </div>
 
                     <div class="input-group-sm col-md-6">
                         <label for="website">Website</label>
-                        <input type="text" class="form-control text-primary" id="website" name="website">
+                        <input type="text" class="form-control" id="website" name="website">
                     </div>
 
                     <div class="input-group-sm col-md-6">
                         <label for="facebook_url">Facebook URL</label>
-                        <input type="text" class="form-control text-primary" id="facebook_url" name="facebook_url">
+                        <input type="text" class="form-control" id="facebook_url" name="facebook_url">
                     </div>
 
                     <div class="input-group-sm col-md-6">
                         <label for="twitter_url">Twitter Url</label>
-                        <input type="text" class="form-control text-primary" id="twitter_url" name="twitter_url">
+                        <input type="text" class="form-control" id="twitter_url" name="twitter_url">
                     </div>
 
                     <div class="input-group-sm col-md-6">
                         <label for="linkedin_url">Linkedin Url</label>
-                        <input type="text" class="form-control text-primary" id="linkedin_url" name="linkedin_url">
+                        <input type="text" class="form-control" id="linkedin_url" name="linkedin_url">
+                    </div>
+
+
+                    <div class="input-group-sm col-md-6">
+                        <label for="logo">Company Logo</label>
+                        <input type="file" class="form-control" id="logo" name="logo">
                     </div>
 
 

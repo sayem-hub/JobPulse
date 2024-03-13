@@ -38,6 +38,12 @@ class CompanyController extends Controller
             return view('company.unapproved-company', compact('unapprovedCompanies'));
         }
 
+        public function featuredCompany()
+        {
+            $featuredCompanies = Company::where('is_featured', 1)->get();
+            return view('company.featured-company', compact('featuredCompanies'));
+        }
+
         public function create()
         {
             $districts = District::select('id', 'name')->get();
@@ -53,7 +59,6 @@ class CompanyController extends Controller
                 'company_name' => 'required',
                 'company_email' => 'required|email',
                 'company_phone' => 'required',
-                'company_logo' => 'nullable',
                 'company_address' => 'required',
                 'district_id' => 'required',
                 'division_id' => 'required',
@@ -74,6 +79,13 @@ class CompanyController extends Controller
 
             $user = Auth::user();
             $validatedData['user_id'] = $user->id;
+            //upload company logo
+            if ($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads/company-logo'), $filename);
+                $validatedData['logo'] = $filename;
+            }
             Company::create($validatedData);
             Plugin::create([
                 'employee_status' => 0,
@@ -98,14 +110,46 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $company = Company::find($id);
-        return view('company.edit', compact('company'));
+        $districts = District::select('id', 'name')->get();
+        $divisions = Division::all();
+        return view('company.edit', compact('company', 'districts', 'divisions'));
     }
 
     public function update(Request $request, $id)
     {
         $company = Company::find($id);
-        // dd($request->all());
-        $company->update($request->all());
+
+           //Update company logo
+           if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/company-logo'), $filename);
+            $company->logo = $filename;
+        }
+
+        $company->update([
+            'company_name' => $request->company_name,
+            'company_email' => $request->company_email,
+            'company_phone' => $request->company_phone,
+            'company_address' => $request->company_address,
+            'district_id' => $request->district_id,
+            'division_id' => $request->division_id,
+            'company_country' => $request->company_country,
+            'establishment_date' => $request->establishment_date,
+            'company_size' => $request->company_size,
+            'company_business' => $request->company_business,
+            'website' => $request->website,
+            'vision' => $request->vision,
+            'facebook_url' => $request->facebook_url,
+            'twitter_url' => $request->twitter_url,
+            'linkedin_url' => $request->linkedin_url,
+            'is_verified' => $request->is_verified,
+            'is_featured' => $request->is_featured,
+            'is_active' => $request->is_active
+        ]);
+        
+     
+        
         Alert::success('Success', 'Company updated successfully!');
         return redirect()->route('company.index');
     }

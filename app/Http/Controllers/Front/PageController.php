@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Front;
 
 use App\Models\Job;
+use App\Models\Company;
 use App\Models\District;
+use App\Models\Candidate;
 use App\Models\Application;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use App\Models\Candidate;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PageController extends Controller
@@ -20,7 +21,9 @@ class PageController extends Controller
     {
         $categories = JobCategory::with('jobs')->select('id', 'name')->limit(8)->get();
         $jobs = Job::where('status', '=', 'published')->with(['company'])->limit(15)->get();
-        return view('pages.home', compact('categories', 'jobs'));
+        $featuredClients = Company::where('is_featured', 1)->get(); 
+        // dd($featuredClients);
+        return view('pages.home', compact('categories', 'jobs', 'featuredClients'));
     }
 
     public function jobSearch(Request $request)
@@ -117,6 +120,9 @@ class PageController extends Controller
             return redirect()->back();
         }
     }
+
+
+   
 
     public function aboutUs()
     {

@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <h4 class="text-center">Approved Company List</h3>
+    <h5 class="text-center">Company List</h3>
    
     <a href="{{ route('company.create') }}" class="btn btn-success btn-sm">Add New Company</a>
     <table class="table table-bordered table-sm small">

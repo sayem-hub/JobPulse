@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
                
                 //Company Unapproved
                 Route::get('company-list/unapproved-company', [CompanyController::class, 'unapprovedCompany'])->name('unapproved.company');
+                Route::get('company-list/featured-company', [CompanyController::class, 'featuredCompany'])->name('featured.company');
 
                   //Jobs Category
                 Route::get('/jobs-category', [JobsCategoryController::class, 'jobsCategory'])->name('category.index');
@@ -99,7 +100,7 @@ Route::group(['middleware' => 'auth'], function () {
                 
                 //Company Dashboard Route
                 Route::get('/dashboard', [DashboardController::class, 'companyDashboard'])->name('company.dashboard');
-                Route::get('/dashboard/company/create', [CompanyController::class, 'create'])->name('company.create');
+               
                
                 Route::get('/dashboard/company-profile/{id}', [DashboardController::class, 'companyProfile'])->name('company.profile');
                 Route::get('/application-approval/{id}', [CompanyController::class, 'applicationApproval'])->name('application.approval');
@@ -116,6 +117,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::middleware(['role:admin,company'])->group(function () {
                 Route::get('/application-received', [CompanyController::class, 'getApplication'])->name('get.application.index');
                 Route::get('/company-list', [CompanyController::class, 'index'])->name('company.index');
+                Route::get('/dashboard/company/create', [CompanyController::class, 'create'])->name('company.create');
                 Route::get('/dashboard/company/edit/{id}', [CompanyController::class, 'edit'])->name('company.edit');
                 Route::post('/dashboard/company/store', [CompanyController::class, 'store'])->name('company.store');
                 Route::post('/dashboard/company/update/{id}', [CompanyController::class, 'update'])->name('company.update');

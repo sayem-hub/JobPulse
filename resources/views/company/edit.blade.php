@@ -5,7 +5,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h5 class="text-center">Create Company</h5>
+        <h5 class="text-center">Edit Company</h5>
     </div>
         <div class="card-body">
             <form action="{{ route('company.update', $company->id) }}" method="POST">
@@ -28,6 +28,25 @@
                         <label for="company_phone">Contact Number</label>
                         <input type="text" class="form-control text-primary" id="company_phone" name="company_phone" value="{{ $company->company_phone }}">
                     </div>
+
+                    <div class="input-group-sm col-md-6">
+                        <label for="district_id">District</label>
+                        <select class="form-select" name="district_id">
+                            <option value="" selected readonly>--Select--</option>
+                          
+                        </select>
+                    </div>
+
+                    <div class="input-group-sm col-md-6">
+                        <label for="division_id">Division</label>
+                        <select class="form-select" name="division_id">
+                            <option value="" selected readonly>--Select--</option>
+                           @foreach ($divisions as $division)
+                               <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                           @endforeach
+                        </select>
+                    </div>
+
 
                     <div class="input-group-sm col-md-6">
                         <label for="company_address">Address</label>
@@ -111,9 +130,12 @@
                                 <option value="0" {{ $company->is_active == 0 ? 'selected' : '' }}>Inactive</option>
                             </select>
                         </div>
-
-
                     @endif
+
+                    <div class="input-group-sm col-md-6">
+                        <label for="logo">Company Logo</label>
+                        <input type="file" class="form-control" id="logo" name="logo">
+                    </div>
 
 
 
