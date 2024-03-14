@@ -64,9 +64,12 @@
                     <li class="nav-item"> <a href="{{ route('jobs.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                             <p>Jobs List</p>
                         </a> </li>
-                    <li class="nav-item"> <a href="{{ route('jobs.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                            <p>Add New Job</p>
-                        </a> </li>
+
+                            
+                        <li class="nav-item"> <a href="{{ route('jobs.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Add New Job</p>
+                            </a> </li>
+                     
                     
                 </ul>
             </li>

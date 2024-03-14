@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use Carbon\Carbon;
 use App\Models\Job;
 use App\Models\Company;
 use App\Models\District;
@@ -20,10 +21,21 @@ class PageController extends Controller
     public function index()
     {
         $categories = JobCategory::with('jobs')->select('id', 'name')->limit(8)->get();
-        $jobs = Job::where('status', '=', 'published')->with(['company'])->limit(15)->get();
         $featuredClients = Company::where('is_featured', 1)->get(); 
-        // dd($featuredClients);
+    
+        // Return only published jobs initially
+        $jobs = Job::where('status', '=', 'published')->with(['company'])->limit(15)->get();
+    
         return view('pages.home', compact('categories', 'jobs', 'featuredClients'));
+    }
+
+
+    public function allJobs()
+    {
+        $jobs = Job::where('status', '=', 'published')->with(['company'])->paginate(20);
+        $categories = JobCategory::select('id', 'name')->get();
+        $locations = District::select('name')->get();
+        return view('pages.all-jobs', compact('jobs', 'categories', 'locations'));
     }
 
     public function jobSearch(Request $request)
@@ -62,6 +74,25 @@ class PageController extends Controller
         $categories = JobCategory::select('id', 'name')->get();
         return view('pages.job-categories', [ 'categories' => $categories]);
     }
+
+                public function getJobsByType($type)
+            {
+                if ($type == 'featured-jobs') {
+                    $jobs = Job::where('status', '=', 'published')->where('is_featured', '=', 1)->with(['company'])->limit(15)->get();
+                } else if ($type == 'part-time') {
+                    $jobs = Job::where('status', '=', 'published')->where('job_type_id', '=', 2)->with(['company'])->limit(15)->get();
+                } else if ($type == 'full-time') {
+                    $jobs = Job::where('status', '=', 'published')->where('job_type_id', '=', 1)->with(['company'])->limit(15)->get();
+                } else if ($type == 'recent-jobs') {
+                    $lastThreeDays = Carbon::now()->subDays(3)->toDateString();
+                    $jobs = Job::where('status', '=', 'published')->whereDate('published_at', '>=', $lastThreeDays)->with(['company'])->limit(15)->get();
+                } else {
+                    $jobs = Job::where('status', '=', 'published')->with(['company'])->limit(15)->get();
+                }
+
+                return view('pages.job_list', compact('jobs'));
+            }
+
 
 
     public function applyJob(Request $request, $jobId)

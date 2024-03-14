@@ -7,13 +7,12 @@
             <div class="grid">
                 <div class="col-span-12">
                     <div class="text-center text-white">
-                        <h3 class="mb-4 text-[26px]">Job List</h3>
+                        <h3 class="mb-4 text-[26px]">Job Search</h3>
                         <div class="page-next">
                             <nav class="inline-block" aria-label="breadcrumb text-center">
                                 <ol class="flex flex-wrap justify-center text-sm font-medium uppercase">
                                     <li><a href="{{ route('home') }}">Home</a></li>
-                                    <li><i class="bx bxs-chevron-right align-middle px-2.5"></i><a href="javascript:void(0)">Company</a></li>
-                                    <li class="active" aria-current="page"><i class="bx bxs-chevron-right align-middle px-2.5"></i> Job List </li>
+                                    <li class="active" aria-current="page"><i class="bx bxs-chevron-right align-middle px-2.5"></i> Job Search </li>
                                 </ol>
                             </nav>
                         </div>
@@ -67,7 +66,7 @@
                                 </div>
                                 <!--end col-->
                                 <div class="col-span-12 xl:col-span-3">
-                                    <a href="javascript:void(0)" class="w-full text-white border-transparent btn group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 focus:ring focus:ring-custom-500/30"><i class="uil uil-filter"></i> Fliter</a>
+                                    <button class="w-full text-white border-transparent btn group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 focus:ring focus:ring-custom-500/30"><i class="uil uil-filter"></i> Filter</button>
                                 </div>
                                 <!--end col-->
                             </div>

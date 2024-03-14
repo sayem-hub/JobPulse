@@ -41,7 +41,8 @@ class JobsController extends Controller
     {
 
         $user_id = Auth::user()->id;
-        $loggedInUserCompanyList = Company::where('user_id', $user_id)->select('id', 'company_name')->get();
+       
+        $loggedInUserCompanyList = Company::where('user_id', $user_id)->where('is_active', 1)->select('id', 'company_name')->get();
         // dd($loggedInUserCompanyList);
         $skills = Skill::all();
         $degreeList = Degree::all();
@@ -53,9 +54,10 @@ class JobsController extends Controller
         if (Auth::user()->role == 'company' && $loggedInUserCompanyList->count() == 0) {
             Alert::warning('Please add your company first');
             return redirect()->route('company.create');
+        } elseif (Auth::user()->role == 'company' && $loggedInUserCompanyList->count() > 0) {
+            $loggedInUserCompanyList = Company::where('user_id', $user_id)->where('is_active', 1)->select('id', 'company_name')->get();
         } else {
-
-            $loggedInUserCompanyList = Company::select('id', 'company_name')->get();
+            $loggedInUserCompanyList = Company::select('id', 'company_name')->where('is_active', 1)->get();
         }
         return view('jobs.create', compact('loggedInUserCompanyList', 'degreeList', 'categoryList', 'jobTypeList', 'skills', 'districts', 'divisions'));
     }

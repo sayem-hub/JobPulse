@@ -20,6 +20,9 @@ use App\Http\Controllers\Jobs\JobsCategoryController;
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('jobs/search', [PageController::class, 'jobSearch'])->name('jobs.search');
 Route::get('/jobs/categories', [PageController::class, 'jobsByCategory'])->name('jobs.categories');
+
+Route::get('/jobs/{type}', [PageController::class, 'getJobsByType'])->name('jobs.type');
+Route::get('/all-jobs', [PageController::class, 'allJobs'])->name('all-jobs');
 Route::get('/about-us', [PageController::class, 'aboutUs'])->name('about-us');
 Route::get('/contact-us', [PageController::class, 'contactUs'])->name('contact-us');
 
@@ -109,9 +112,7 @@ Route::group(['middleware' => 'auth'], function () {
                 //Jobs Route
                 Route::get('jobs/create', [JobsController::class, 'createJob'])->name('jobs.create');
                 Route::post('jobs/store', [JobsController::class, 'storeJob'])->name('jobs.store');
-                Route::get('jobs/edit/{id}', [JobsController::class, 'editJob'])->name('jobs.edit');
-                Route::post('jobs/update/{id}', [JobsController::class, 'updateJob'])->name('jobs.update');
-
+               
         });
         
         Route::middleware(['role:admin,company'])->group(function () {
@@ -125,6 +126,9 @@ Route::group(['middleware' => 'auth'], function () {
                 
                 
                 Route::get('/jobs', [JobsController::class, 'jobsIndex'])->name('jobs.index');
+                Route::get('jobs/edit/{id}', [JobsController::class, 'editJob'])->name('jobs.edit');
+                Route::post('jobs/update/{id}', [JobsController::class, 'updateJob'])->name('jobs.update');
+
                 Route::get('/plugins', [PluginController::class, 'index'])->name('plugin.index');
                 Route::post('toggle-status', [PluginController::class, 'toggleStatus'])->name('toggleStatus');
         
