@@ -24,13 +24,13 @@
                 <div class="grid items-center grid-cols-12">
                     <div class="col-span-12 lg:col-span-2">
                         <div class="mb-4 text-center mb-md-0">
-                            <a href="company-details.html"><img src="assets/images/featured-job/img-01.png" alt="" class="mx-auto img-fluid rounded-3"></a>
+                            <a href="company-details.html"><img src="{{ asset('assets/images/featured-job/img-01.png') }}" alt="" class="mx-auto img-fluid rounded-3"></a>
                         </div>
                     </div>
                     <!--end col-->
                     <div class="col-span-12 lg:col-span-3">
                         <div class="mb-2 mb-md-0">
-                            <h5 class="mb-1 fs-18"><a href="job-details.html" class="text-gray-900 dark:text-gray-50">{{ $job->job_title }}</a>
+                            <h5 class="mb-1 fs-18"><a href="{{ route('jobs-details', $job->id) }}" class="text-gray-900 dark:text-gray-50">{{ $job->job_title }}</a>
                             </h5>
                             <p class="mb-0 text-gray-500 fs-14 dark:text-gray-300">{{ $job->company->company_name }}</p>
                         </div>
@@ -101,7 +101,7 @@
     <div class="mt-8">
         <div class="grid grid-cols-1">
             <div class="text-center">
-                <a href="{{ route('all-jobs') }}" class="text-white border-transparent group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 btn focus:ring focus:ring-custom-500/20">View More  <i class="uil uil-arrow-right ms-1"></i></a>
+                <a href="{{ route('job.list') }}" class="text-white border-transparent group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 btn focus:ring focus:ring-custom-500/20">View More  <i class="uil uil-arrow-right ms-1"></i></a>
             </div>
         </div>
     </div>

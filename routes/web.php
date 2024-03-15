@@ -22,7 +22,9 @@ Route::get('jobs/search', [PageController::class, 'jobSearch'])->name('jobs.sear
 Route::get('/jobs/categories', [PageController::class, 'jobsByCategory'])->name('jobs.categories');
 
 Route::get('/jobs/{type}', [PageController::class, 'getJobsByType'])->name('jobs.type');
-Route::get('/all-jobs', [PageController::class, 'allJobs'])->name('all-jobs');
+Route::get('/job-list', [PageController::class, 'allJobs'])->name('job.list');
+Route::get('/jobs-details/{id}', [PageController::class, 'jobsDetails'])->name('jobs-details');
+
 Route::get('/about-us', [PageController::class, 'aboutUs'])->name('about-us');
 Route::get('/contact-us', [PageController::class, 'contactUs'])->name('contact-us');
 
@@ -94,8 +96,6 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('degree/edit/{id}', [DegreeController::class, 'editDegree'])->name('degree.edit');
                 Route::post('degree/update/{id}', [DegreeController::class, 'updateDegree'])->name('degree.update');
                 Route::post('degree/delete/{id}', [DegreeController::class, 'deleteDegree'])->name('degree.delete');
-
-               
         });
 
         
@@ -103,8 +103,7 @@ Route::group(['middleware' => 'auth'], function () {
                 
                 //Company Dashboard Route
                 Route::get('/dashboard', [DashboardController::class, 'companyDashboard'])->name('company.dashboard');
-               
-               
+
                 Route::get('/dashboard/company-profile/{id}', [DashboardController::class, 'companyProfile'])->name('company.profile');
                 Route::get('/application-approval/{id}', [CompanyController::class, 'applicationApproval'])->name('application.approval');
                 Route::post('/application-approval/update/{id}', [CompanyController::class, 'applicationApprovalUpdate'])->name('application.approval.update');
@@ -112,7 +111,6 @@ Route::group(['middleware' => 'auth'], function () {
                 //Jobs Route
                 Route::get('jobs/create', [JobsController::class, 'createJob'])->name('jobs.create');
                 Route::post('jobs/store', [JobsController::class, 'storeJob'])->name('jobs.store');
-               
         });
         
         Route::middleware(['role:admin,company'])->group(function () {

@@ -35,7 +35,7 @@ class PageController extends Controller
         $jobs = Job::where('status', '=', 'published')->with(['company'])->paginate(20);
         $categories = JobCategory::select('id', 'name')->get();
         $locations = District::select('name')->get();
-        return view('pages.all-jobs', compact('jobs', 'categories', 'locations'));
+        return view('pages.job-list', compact('jobs', 'categories', 'locations'));
     }
 
     public function jobSearch(Request $request)
@@ -90,7 +90,14 @@ class PageController extends Controller
                     $jobs = Job::where('status', '=', 'published')->with(['company'])->limit(15)->get();
                 }
 
-                return view('pages.job_list', compact('jobs'));
+                return view('pages.type-wise-job', compact('jobs'));
+            }
+
+
+            public function jobsDetails($id)
+            {
+                $job = Job::where('id', $id)->first();
+                return view('pages.job-details', compact('job'));
             }
 
 

@@ -224,6 +224,13 @@
 
                                 </div>
                             </div>
+                            <div class="mt-8">
+                                <div class="grid grid-cols-1">
+                                    <div class="text-center">
+                                        <a href="{{ route('job.list') }}" class="text-white border-transparent group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 btn focus:ring focus:ring-custom-500/20">View More  <i class="uil uil-arrow-right ms-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
     
                 </div>
@@ -231,13 +238,7 @@
              </div>                  
 
 
-                        <div class="mt-8">
-                            <div class="grid grid-cols-1">
-                                <div class="text-center">
-                                    <a href="{{ route('all-jobs') }}" class="text-white border-transparent group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 btn focus:ring focus:ring-custom-500/20">View More  <i class="uil uil-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </section>
             <!-- end job list -->

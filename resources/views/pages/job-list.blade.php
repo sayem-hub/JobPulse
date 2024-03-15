@@ -7,12 +7,12 @@
         <div class="grid">
             <div class="col-span-12">
                 <div class="text-center text-white">
-                    <h3 class="mb-4 text-[26px]">All Jobs</h3>
+                    <h3 class="mb-4 text-[26px]">Job List</h3>
                     <div class="page-next">
                         <nav class="inline-block" aria-label="breadcrumb text-center">
                             <ol class="flex justify-center text-sm font-medium uppercase">
                                 <li><a href="index.html">Home</a></li>
-                                <li class="active" aria-current="page"><i class="bx bxs-chevron-right align-middle px-2.5"></i> ALL JOBS </li>
+                                <li class="active" aria-current="page"><i class="bx bxs-chevron-right align-middle px-2.5"></i> JOB LIST </li>
                             </ol>
                         </nav>
                     </div>
@@ -85,12 +85,12 @@
                                 <div class="grid grid-cols-12 gap-5">
                                     <div class="col-span-12 lg:col-span-2">
                                         <div class="mb-4 text-center mb-md-0">
-                                            <a href="company-details.html"><img src="assets/images/featured-job/img-01.png" alt="" class="md:mx-auto img-fluid rounded-3"></a>
+                                            <a href="company-details.html"><img src="{{ asset('assets/images/featured-job/img-01.png') }}" alt="" class="md:mx-auto img-fluid rounded-3"></a>
                                         </div>
                                     </div>
                                     <!--end col-->
                                     <div class="col-span-12 lg:col-span-10">
-                                        <h5 class="mb-1 fs-17"><a href="job-details.html" class="dark:text-gray-50">{{ $job->job_title }}</a> 
+                                        <h5 class="mb-1 fs-17"><a href="{{ route('jobs-details', $job->id) }}" class="dark:text-gray-50">{{ $job->job_title }}</a> 
                                             <small class="font-normal text-gray-500 dark:text-gray-300">({{ $job->experience_level }})</small>
                                         </h5>
                                         <ul class="flex flex-wrap mb-0 gap-y-3 lg:gap-3">

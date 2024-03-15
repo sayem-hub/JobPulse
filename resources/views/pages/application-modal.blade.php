@@ -37,13 +37,12 @@
                                     </a>
                                 </div>
 
-                              
                                 <div class="text-center">
                                     <button class="w-full mt-4 text-white border-transparent btn group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500">Submit</button>
                                 </div>
                             </form>
                                 <div class="mt-4 text-center">
-                                    <p class="mb-0 text-gray-800 dark:text-gray-300">Don't a member ? <a href="sign-in.html" class="font-medium underline group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500"> Sign Up </a></p>
+                                    <p class="mb-0 text-gray-800 dark:text-gray-300">Don't a member ? <a href="{{ route('register.candidate.page') }}" class="font-medium underline group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500"> Sign Up </a></p>
                                 </div>
                             </div>
                         </div>
@@ -56,14 +55,10 @@
 
     <script>
         $(document).ready(function() {
-            // Handle click event on Apply Now button
             $('.btn-open-modal').click(function() {
-                // Get the job ID and company ID from data attributes
                 var jobId = $(this).data('job-id');
                 var companyId = $(this).data('company-id');
-                // Update the form action of the modal with the job ID
                 $('#jobApplicationForm').attr('action', '/candidate/apply-job/' + jobId);
-                // Set the company ID value in a hidden input field
                 $('#companyIdInput').val(companyId);
             });
         });
