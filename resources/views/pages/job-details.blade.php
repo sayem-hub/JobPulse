@@ -162,194 +162,7 @@
                                 </div>
                                 
                             </div>
-                            <div class="mt-10 space-y-8">
-                                <h5 class="text-gray-900 dark:text-gray-50">Related Jobs</h5>
-
-                                <div class="relative overflow-hidden transition-all duration-500 ease-in-out bg-white border rounded-md border-gray-100/50 group group-data-[theme-color=violet]:hover:border-violet-500 group-data-[theme-color=sky]:hover:border-sky-500 group-data-[theme-color=red]:hover:border-red-500 group-data-[theme-color=green]:hover:border-green-500 group-data-[theme-color=pink]:hover:border-pink-500 group-data-[theme-color=blue]:hover:border-blue-500 hover:-translate-y-2 dark:bg-neutral-900 dark:border-neutral-600">
-                                    <div class="p-6">
-                                        <div class="grid grid-cols-12 gap-5">
-                                            <div class="col-span-12 lg:col-span-1">
-                                                <div class="mb-4 text-center mb-md-0">
-                                                    <a href="company-details.html"><img src="assets/images/featured-job/img-01.png" alt="" class="mx-auto img-fluid rounded-3"></a>
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-span-12 lg:col-span-10">
-                                                <h5 class="mb-1 text-gray-900 fs-17"><a href="job-details.html" class="dark:text-gray-50">HTML Developer</a> 
-                                                    <small class="font-normal text-gray-500 dark:text-gray-300">(0-2 Yrs Exp.)</small>
-                                                </h5>
-                                                <ul class="flex flex-wrap gap-3 mb-0">
-                                                    <li>
-                                                        <p class="mb-0 text-sm text-gray-500 dark:text-gray-300">Creative Agency</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="mdi mdi-map-marker"></i> New York</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="uil uil-wallet"></i> $250 - $800 / month</p>
-                                                    </li>
-                                                </ul>
-                                                <div class="mt-4">
-                                                    <div class="flex flex-wrap gap-1.5">
-                                                        <span class="bg-green-500/20 text-green-500 text-11 px-2 py-0.5 font-medium rounded">Full Time</span>
-                                                        <span class="bg-yellow-500/20 text-yellow-500 text-11 px-2 py-0.5 font-medium rounded">Urgent</span>
-                                                        <span class="bg-sky-500/20 text-sky-500 text-11 px-2 py-0.5 font-medium rounded">Private</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--end row-->
-                                    </div>
-                                    <div class="px-4 py-3 bg-gray-50 dark:bg-neutral-700">
-                                        <div class="grid grid-cols-12">
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <ul class="flex flex-wrap gap-2 text-gray-700 dark:text-gray-50">
-                                                    <li><i class="uil uil-tag"></i> Keywords :</li>
-                                                    <li><a href="javascript:void(0)" class="text-gray-500 dark:text-gray-50">Ui designer</a>,</li>
-                                                    <li><a href="javascript:void(0)" class="text-gray-500 dark:text-gray-50">developer</a></li>
-                                                </ul>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-span-12 mt-2 lg:col-span-6 lg:mt-0">
-                                                <div class="ltr:lg:text-end rtl:lg:text-start dark:text-gray-50">
-                                                    <a href="#applyNow" data-bs-toggle="modal">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                        </div>
-                                        <!--end row-->
-                                    </div>
-                                    <div class="absolute top-4 ltr:right-4 rtl:left-4">
-                                        <div class="w-8 h-8 text-center text-gray-100 transition-all duration-300 bg-transparent border rounded border-gray-100/50 hover:bg-red-600 hover:text-white hover:border-transparent dark:border-zinc-700">
-                                            <a href="javascript:void(0)"><i class="uil uil-heart-alt text-lg leading-[1.8]"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="relative overflow-hidden transition-all duration-500 ease-in-out bg-white border rounded-md border-gray-100/50 group group-data-[theme-color=violet]:hover:border-violet-500 group-data-[theme-color=sky]:hover:border-sky-500 group-data-[theme-color=red]:hover:border-red-500 group-data-[theme-color=green]:hover:border-green-500 group-data-[theme-color=pink]:hover:border-pink-500 group-data-[theme-color=blue]:hover:border-blue-500 hover:-translate-y-2 dark:bg-neutral-900 dark:border-neutral-600">
-                                    <div class="p-6">
-                                        <div class="grid grid-cols-12 gap-5">
-                                            <div class="col-span-12 lg:col-span-1">
-                                                <div class="mb-4 text-center mb-md-0">
-                                                    <a href="company-details.html"><img src="assets/images/featured-job/img-02.png" alt="" class="mx-auto img-fluid rounded-3"></a>
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-span-10">
-                                                <h5 class="mb-1 text-gray-900 fs-17"><a href="job-details.html" class="dark:text-gray-50">Marketing Director</a> 
-                                                    <small class="font-normal text-gray-500 dark:text-gray-300">(2-4 Yrs Exp.)</small>
-                                                </h5>
-                                                <ul class="flex flex-wrap gap-3 mb-0">
-                                                    <li>
-                                                        <p class="mb-0 text-sm text-gray-500 dark:text-gray-300">Jobcy Technology Pvt.Ltd</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="mdi mdi-map-marker"></i> California</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="uil uil-wallet"></i> $250 - $800 / month</p>
-                                                    </li>
-                                                </ul>
-                                                <div class="mt-4">
-                                                    <div class="flex flex-wrap gap-1.5">
-                                                        <span class="bg-red-500/20 text-red-500 text-11 px-2 py-0.5 font-medium rounded">Part Time</span>
-                                                        <span class="bg-sky-500/20 text-sky-500 text-11 px-2 py-0.5 font-medium rounded">Private</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--end row-->
-                                    </div>
-                                    <div class="px-4 py-3 bg-gray-50 dark:bg-neutral-700">
-                                        <div class="grid grid-cols-12">
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <ul class="flex flex-wrap gap-2 text-gray-700 dark:text-gray-50">
-                                                    <li><i class="uil uil-tag"></i> Keywords :</li>
-                                                    <li><a href="javascript:void(0)" class="text-gray-500 dark:text-gray-50">Ui designer</a>,</li>
-                                                    <li><a href="javascript:void(0)" class="text-gray-500 dark:text-gray-50">developer</a></li>
-                                                </ul>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-span-12 mt-2 lg:col-span-6 lg:mt-0">
-                                                <div class="ltr:lg:text-end rtl:lg:text-start dark:text-gray-50">
-                                                    <a href="#applyNow" data-bs-toggle="modal">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                        </div>
-                                        <!--end row-->
-                                    </div>
-                                    <div class="absolute top-4 ltr:right-4 rtl:left-4">
-                                        <div class="w-8 h-8 text-center text-white bg-red-600 rounded">
-                                            <a href="javascript:void(0)"><i class="uil uil-heart-alt text-lg leading-[1.9]"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="relative overflow-hidden transition-all duration-500 ease-in-out bg-white border rounded-md border-gray-100/50 group group-data-[theme-color=violet]:hover:border-violet-500 group-data-[theme-color=sky]:hover:border-sky-500 group-data-[theme-color=red]:hover:border-red-500 group-data-[theme-color=green]:hover:border-green-500 group-data-[theme-color=pink]:hover:border-pink-500 group-data-[theme-color=blue]:hover:border-blue-500 hover:-translate-y-2 dark:bg-neutral-900 dark:border-neutral-600">
-                                    <div class="p-6">
-                                        <div class="grid grid-cols-12 gap-5">
-                                            <div class="col-span-12 lg:col-span-1">
-                                                <div class="mb-4 text-center mb-md-0">
-                                                    <a href="company-details.html"><img src="assets/images/featured-job/img-03.png" alt="" class="mx-auto img-fluid rounded-3"></a>
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-span-10">
-                                                <h5 class="mb-1 text-gray-900 fs-17"><a href="job-details.html" class="dark:text-gray-50">HTML Developer</a> 
-                                                    <small class="font-normal text-gray-500 dark:text-gray-300">(2-4 Yrs Exp.)</small>
-                                                </h5>
-                                                <ul class="flex flex-wrap gap-3 mb-0">
-                                                    <li>
-                                                        <p class="mb-0 text-sm text-gray-500 dark:text-gray-300">Jobcy Technology Pvt.Ltd</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="mdi mdi-map-marker"></i> California</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="mb-0 text-sm text-gray-500 dark:text-gray-300"><i class="uil uil-wallet"></i> $250 - $800 / month</p>
-                                                    </li>
-                                                </ul>
-                                                <div class="mt-4">
-                                                    <div class="flex flex-wrap gap-1.5">
-                                                        <span class="bg-violet-500/20 text-violet-500 text-11 px-2 py-0.5 font-medium rounded">Freelance</span>
-                                                        <span class="bg-sky-500/20 text-sky-500 text-11 px-2 py-0.5 font-medium rounded">Internship</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--end row-->
-                                    </div>
-                                    <div class="px-4 py-3 bg-gray-50 dark:bg-neutral-700">
-                                        <div class="grid grid-cols-12">
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <ul class="flex flex-wrap gap-2 text-gray-700 dark:text-gray-50">
-                                                    <li><i class="uil uil-tag"></i> Keywords :</li>
-                                                    <li><a href="javascript:void(0)" class="text-gray-500 dark:text-gray-50">Ui designer</a>,</li>
-                                                    <li><a href="javascript:void(0)" class="text-gray-500 dark:text-gray-50">developer</a></li>
-                                                </ul>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-span-12 mt-2 lg:col-span-6 lg:mt-0">
-                                                <div class="ltr:lg:text-end rtl:lg:text-start dark:text-gray-50">
-                                                    <a href="#applyNow" data-bs-toggle="modal">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                        </div>
-                                        <!--end row-->
-                                    </div>
-                                    <div class="absolute top-4 ltr:right-4 rtl:left-4">
-                                        <div class="w-8 h-8 text-center text-gray-100 transition-all duration-300 bg-transparent border rounded border-gray-100/50 hover:bg-red-600 hover:text-white hover:border-transparent dark:border-zinc-700">
-                                            <a href="javascript:void(0)"><i class="uil uil-heart-alt text-lg leading-[1.8]"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-4 text-center">
-                                    <a href="job-list.html" class="font-medium text-gray-900 dark:text-gray-50">View More <i class="mdi mdi-arrow-right"></i></a>
-                                </div>
-                            </div>
+                           
                         </div>
                         <div class="col-span-12 space-y-6 lg:col-span-4">
                             <div class="border rounded border-gray-100/30 dark:border-neutral-600/80">
@@ -362,7 +175,7 @@
                                                 <i class="uil uil-user icon group-data-[theme-color=violet]:bg-violet-500/20 group-data-[theme-color=sky]:bg-sky-500/20 group-data-[theme-color=red]:bg-red-500/20 group-data-[theme-color=green]:bg-green-500/20 group-data-[theme-color=pink]:bg-pink-500/20 group-data-[theme-color=blue]:bg-blue-500/20 h-12 w-12 text-center leading-[2.4] text-xl group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500 rounded-full"></i>
                                                 <div class="ltr:ml-4 rtl:mr-4">
                                                     <h6 class="mb-2 text-sm text-gray-900 dark:text-gray-50">Job Title</h6>
-                                                    <p class="text-gray-500 dark:text-gray-300">Product Designer</p> 
+                                                    <p class="text-gray-500 dark:text-gray-300">{{ $job->job_title }}r</p> 
                                                 </div>
                                             </div>
                                         </li>
@@ -371,7 +184,7 @@
                                                 <i class="uil uil-star-half-alt icon group-data-[theme-color=violet]:bg-violet-500/20 group-data-[theme-color=sky]:bg-sky-500/20 group-data-[theme-color=red]:bg-red-500/20 group-data-[theme-color=green]:bg-green-500/20 group-data-[theme-color=pink]:bg-pink-500/20 group-data-[theme-color=blue]:bg-blue-500/20 h-12 w-12 text-center leading-[2.4] text-xl group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500 rounded-full"></i>
                                                 <div class="ltr:ml-4 rtl:mr-4">
                                                     <h6 class="mb-2 text-sm text-gray-900 dark:text-gray-50">Experience</h6>
-                                                    <p class="text-gray-500 dark:text-gray-300"> 0-3 Years</p> 
+                                                    <p class="text-gray-500 dark:text-gray-300"> {{ $job->experience_level }}</p> 
                                                 </div>
                                             </div>
                                         </li>
@@ -380,7 +193,7 @@
                                                 <i class="uil uil-location-point icon group-data-[theme-color=violet]:bg-violet-500/20 group-data-[theme-color=sky]:bg-sky-500/20 group-data-[theme-color=red]:bg-red-500/20 group-data-[theme-color=green]:bg-green-500/20 group-data-[theme-color=pink]:bg-pink-500/20 group-data-[theme-color=blue]:bg-blue-500/20 h-12 w-12 text-center leading-[2.4] text-xl group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500 rounded-full"></i>
                                                 <div class="ltr:ml-4 rtl:mr-4">
                                                     <h6 class="mb-2 text-sm text-gray-900 dark:text-gray-50">Location</h6>
-                                                    <p class="text-gray-500 dark:text-gray-300"> New york</p> 
+                                                    <p class="text-gray-500 dark:text-gray-300">{{ $job->district->name }}, {{ $job->division->division_name }}</p> 
                                                 </div>
                                             </div>
                                         </li>
@@ -389,7 +202,7 @@
                                                 <i class="uil uil-usd-circle icon group-data-[theme-color=violet]:bg-violet-500/20 group-data-[theme-color=sky]:bg-sky-500/20 group-data-[theme-color=red]:bg-red-500/20 group-data-[theme-color=green]:bg-green-500/20 group-data-[theme-color=pink]:bg-pink-500/20 group-data-[theme-color=blue]:bg-blue-500/20 h-12 w-12 text-center leading-[2.4] text-xl group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500 rounded-full"></i>
                                                 <div class="ltr:ml-4 rtl:mr-4">
                                                     <h6 class="mb-2 text-sm text-gray-900 dark:text-gray-50">Offered Salary</h6>
-                                                    <p class="text-gray-500 dark:text-gray-300">$35k - $45k</p> 
+                                                    <p class="text-gray-500 dark:text-gray-300">৳ {{ $job->salary_range }}</p> 
                                                 </div>
                                             </div>
                                         </li>
@@ -398,7 +211,7 @@
                                                 <i class="uil uil-graduation-cap icon group-data-[theme-color=violet]:bg-violet-500/20 group-data-[theme-color=sky]:bg-sky-500/20 group-data-[theme-color=red]:bg-red-500/20 group-data-[theme-color=green]:bg-green-500/20 group-data-[theme-color=pink]:bg-pink-500/20 group-data-[theme-color=blue]:bg-blue-500/20 h-12 w-12 text-center leading-[2.4] text-xl group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500 rounded-full"></i>
                                                 <div class="ltr:ml-4 rtl:mr-4">
                                                     <h6 class="mb-2 text-sm text-gray-900 dark:text-gray-50">Qualification</h6>
-                                                    <p class="text-gray-500 dark:text-gray-300">Bachelor Degree</p> 
+                                                    <p class="text-gray-500 dark:text-gray-300">{{ $job->requirements }}</p> 
                                                 </div>
                                             </div>
                                         </li>
@@ -407,7 +220,7 @@
                                                 <i class="uil uil-building icon group-data-[theme-color=violet]:bg-violet-500/20 group-data-[theme-color=sky]:bg-sky-500/20 group-data-[theme-color=red]:bg-red-500/20 group-data-[theme-color=green]:bg-green-500/20 group-data-[theme-color=pink]:bg-pink-500/20 group-data-[theme-color=blue]:bg-blue-500/20 h-12 w-12 text-center leading-[2.4] text-xl group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500 rounded-full"></i>
                                                 <div class="ltr:ml-4 rtl:mr-4">
                                                     <h6 class="mb-2 text-sm text-gray-900 dark:text-gray-50">Industry</h6>
-                                                    <p class="text-gray-500 dark:text-gray-300">Private</p> 
+                                                    <p class="text-gray-500 dark:text-gray-300">{{ $job->company->organization_type }}</p> 
                                                 </div>
                                             </div>
                                         </li>
@@ -416,14 +229,14 @@
                                                 <i class="uil uil-history icon group-data-[theme-color=violet]:bg-violet-500/20 group-data-[theme-color=sky]:bg-sky-500/20 group-data-[theme-color=red]:bg-red-500/20 group-data-[theme-color=green]:bg-green-500/20 group-data-[theme-color=pink]:bg-pink-500/20 group-data-[theme-color=blue]:bg-blue-500/20 h-12 w-12 text-center leading-[2.4] text-xl group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500 rounded-full"></i>
                                                 <div class="ltr:ml-4 rtl:mr-4">
                                                     <h6 class="mb-2 text-sm text-gray-900 dark:text-gray-50">Date Posted</h6>
-                                                    <p class="text-gray-500 dark:text-gray-300">Posted 2 hrs ago</p> 
+                                                    <p class="text-gray-500 dark:text-gray-300">{{ \Carbon\Carbon::parse($job->published_at)->diffForHumans() }}</p> 
                                                 </div>
                                             </div>
                                         </li>
                                     </ul>
 
                                     <div class="mt-8 space-y-2">
-                                        <a href="#applyNow" data-bs-toggle="modal" class="btn w-full group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 border-transparent text-white hover:-translate-y-1.5">Apply Now <i class="uil uil-arrow-right"></i></a>
+                                        <a href="#applicationModal" class="btn w-full group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 border-transparent text-white hover:-translate-y-1.5" data-tw-toggle="modal" data-tw-target="#modal-id_form" data-job-id="{{ $job->id }}" data-company-id="{{ $job->company_id }}">Apply Now <i class="uil uil-arrow-right"></i></a>
                                         <a href="bookmark-jobs.html" class="btn w-full bg-yellow-500/20 border-transparent text-yellow-500 hover:-translate-y-1.5 dark:bg-yellow-500/30"><i class="uil uil-bookmark"></i> Add Bookmark</a>
                                     </div>
                                 </div>
@@ -434,7 +247,7 @@
                                         <img src="assets/images/featured-job/img-02.png" alt="" class="mx-auto img-fluid">
 
                                         <div class="mt-4 text-center">
-                                            <h6 class="text-gray-900 text-17 dark:text-gray-50">Jobcy Technology Pvt.Ltd</h6>
+                                            <h6 class="text-gray-900 text-17 dark:text-gray-50">{{ $job->company->company_name }}</h6>
                                             <p class="text-gray-500 dark:text-gray-300">Since July 2017</p>
                                         </div>
 
@@ -444,7 +257,7 @@
                                                     <i class="text-xl uil uil-phone-volume group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500"></i>
                                                     <div class="ltr:ml-3 rtl:mr-3">
                                                         <h6 class="mb-1 text-sm text-gray-900 dark:text-gray-50">Phone</h6>
-                                                        <p class="text-sm text-gray-500 dark:text-gray-300">+589 560 56555</p>
+                                                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ $job->company->company_phone }}</p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -453,7 +266,7 @@
                                                     <i class="text-xl uil uil-envelope group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500"></i>
                                                     <div class="ltr:ml-3 rtl:mr-3">
                                                         <h6 class="mb-1 text-sm text-gray-900 dark:text-gray-50">Email</h6>
-                                                        <p class="text-sm text-gray-500 dark:text-gray-300">pixltechnology@info.com</p>
+                                                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ $job->company->company_email }}</p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -462,7 +275,7 @@
                                                     <i class="text-xl uil uil-globe group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500"></i>
                                                     <div class="ltr:ml-3 rtl:mr-3">
                                                         <h6 class="mb-1 text-sm text-gray-900 dark:text-gray-50">Website</h6>
-                                                        <p class="mb-0 text-gray-500 dark:text-gray-300 fs-14 text-break">www.Jobcytechnology.pvt.ltd.com</p>
+                                                        <p class="mb-0 text-gray-500 dark:text-gray-300 fs-14 text-break">{{ $job->company->website }}</p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -471,7 +284,7 @@
                                                     <i class="text-xl uil uil-map-marker group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500"></i>
                                                     <div class="ltr:ml-3 rtl:mr-3">
                                                         <h6 class="mb-1 text-sm text-gray-900 dark:text-gray-50">Location</h6>
-                                                        <p class="text-sm text-gray-500 dark:text-gray-300">Oakridge Lane Richardson.</p>
+                                                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ $job->company->company_address }}</p>
                                                     </div>
                                                 </div>
                                             </li>
