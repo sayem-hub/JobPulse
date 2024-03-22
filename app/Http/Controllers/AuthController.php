@@ -111,9 +111,11 @@ class AuthController extends Controller
                 'role' => "company",
             ]);
 
-            return ResponseHelper::Out('success', $employer, 200);
+            Alert::success('Registration Success', 'Welcome to the Job Pulse!');
         } catch (Exception $e) {
-            return ResponseHelper::Out('error', $e, 200);
+            Log::error($e->getMessage());
+            Alert::warning('Registration Failed', 'Please check your credentials!');
+            return redirect()->back();
         }
     }
 
